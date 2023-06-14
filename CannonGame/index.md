@@ -47,9 +47,9 @@
   * 예제 코드 - exam
 
 
-
-![Project 구성](./image/project_init.png)
-
+<p align="center">
+<img src="./image/figure_1.png" alt="프로젝트 구성"/>
+</p>
 
 
 ## 2. Ball World
@@ -68,7 +68,7 @@
 #### 정의
 
 <p align="center">
-  <img src="./image/ball.png" />
+  <img src="./image/ball.png" alt="Ball"/>
 </p>
 
 
@@ -294,7 +294,9 @@ public class Exam_2_1_1 {
 * Graphics 클래스에서는 원을 그리기 위한 별도의 메소드를 제공하지 않고 타원 그리기 메소드 이용
 * 원은 폭과 높이가 같은 타원
 
-![oval](./image/oval.png)
+<p align="center">
+<img src="./image/oval.png" alt="oval"/>
+</p>
 
 ---
 
@@ -559,7 +561,9 @@ public class Exam_2_2_1 {
 
 * 실행 후 아무런 그림이 없는 window가 실행된다.
 
-  ![실행 결과](./image/exam_2_2_1_1.png)
+<p align="center">
+  <img src="./image/exam_2_2_1_1.png" alg="실행 결과"/>
+</p>
 
 * log4j2를 이용해 로그가 출력되도록 구성하였으므로, 실행시 다음과 같은 로그가 출력된다.
 
@@ -608,7 +612,9 @@ World 클래스를 정의하고, 테스트 코드를 이용해 world가 생성�
 
 * 테스트 코드를 실행한 결과는 다음과 같이 출력된다.
 
-	![World Test](./image/world_test.png)
+<p align="center">
+  <img src="./image/world_test.png" alt="exam_2_2_2_1">
+</p>
 
 * 로그 출력은 다음과 같다.
 
@@ -644,7 +650,9 @@ ball의 이동은 시간이 변화함에 따라 위치가 변화함을 말한다
 
 단위 시간 dt는 화면을 구성하는 시간 간격 또는 행위를 수행할 의미 있는 단위 시간으로  Ball이나 World에서는 Ball을 이동 시키고 화면을 출력하는 과정이 될 것이다.
 
-![단위 시간 변화](./image/chapter_3_1.png)
+<p align="center">
+  <img src="./image/chapter_3_1.png" alt="단위 시간 변화">
+</p>
 
 
 
@@ -663,7 +671,9 @@ ball의 이동은 시간이 변화함에 따라 위치가 변화함을 말한다
 
   * 이동 명령(move)에 따라 지정된 변화량 만큼 이동한다.
 
-    ![Movable Ball](./image/chapter_3_1_1.png)
+<p align="center">
+  <img src="./image/chapter_3_1_1.png" alt="Movable Ball">
+</p>
 
   * 변화량은 변경 가능하다.
 
@@ -1038,15 +1048,21 @@ MovableWorld 클래스를 정의하고, 테스트 코드를 이용해 기본 동
 
 * 이동 횟수가 적을 경우, 다음과 같이 멈춰 있다.
 
-  ![이동 횟수 적음](./image/exam_3_2_2_1.png)
+<p align="center">
+  <img src="./image/exam_3_2_2_1.png" alt="이동 횟수 적음">
+</p>
 
 * 이동 횟수가 조금만 늘어도 화면에는 몇개 보이지 않는다.
 
-  ![이동 횟수 중간](/Users/nhn/Documents/교육 과정/CannonGame/image/exam_3_2_2_2.png)
+<p align="center">
+  <img src="./image/exam_3_2_2_2.png" alt="이동 횟수 중간">
+</p>
 
 * 이동 횟수가 조금만 많아져도 출력되는 ball은 하나도 없다.
 
-  ![이동 횟수 많음](./image/exam_3_2_2_3.png)
+<p align="center">
+  <img src="./image/exam_3_2_2_3.png" alt="이동 횟수 많음">
+</p>
 
 **물음**
 
@@ -1100,7 +1116,9 @@ MovableWorld 클래스를 정의하고, 테스트 코드를 이용해 기본 동
 
 * MovableWorld는 아래 그림과 같이  $dt$ 간격마다 ball을 이동시킴
 
-  ![zero dt](./image/zero_dt.png)
+<p align="center">
+  <img src="./image/zero_dt.png" alt="Zero DT">
+</p>
 
 * 앞에서 구현한 MovableWorld에서는 $dt$에 대해 정의하지 않음
 
@@ -1235,7 +1253,9 @@ move간 단위 시간(dt)로 줄 경우 실제 수행시간은 $T=dt * n$ 이 �
 
 이는 move 처리시간을 감안하지 않을 것으로서 실제 수행 시간은 $T = (\alpha + dt) * n$ 가 된다.
 
-![단위시간 오차](./image/chapter_3_3_1_1.png)
+<p align="center">
+  <img src="./image/chapter_3_3_1_1.png" alt="단위시간 오차">
+</p>
 
 ---
 
@@ -1251,7 +1271,9 @@ move를 수행한 후 다음 move를 호출하기까지의 대기 시간을 단�
 
 다음 그림은 실제 수행 작업을 고려한 단위 시간을 나타낸 것이다.
 
-![단위시간 오차 보정](./image/exam_3_3_3_1.png)
+<p align="center">
+  <img src="./image/exam_3_3_3_1.png" alt="단위시간 오차 보정">
+</p>
 
 수정한 결과가 아래와 같이 출력되는지 확인해보자.
 
@@ -1378,7 +1400,9 @@ BoundedBall에는 자신이 움직일 수 있는 영역 정보가 필요하다
   -  ball과 경계영역이 겹치는 것은  ball을 둘러싸는 최소한의 사각형이 경계영역과 겹치는 것이 동일하다.
   - 특정한 점이 사격형을 벗어난 것은 contains 함수로도 알 수 있다.
 
-![exam_4_1_1_1](./image/exam_4_1_1_1.png)
+<p align="center">
+  <img src="./image/exam_4_1_1_1.png" alt="exam_4_1_1_1">
+</p>
 
 - 벽에 튕기는 것은 다음의 경우로 분류된다.
 
@@ -1392,13 +1416,17 @@ BoundedBall에는 자신이 움직일 수 있는 영역 정보가 필요하다
     - ball의 윗쪽 끝부분이 경계영역을 벗어나면 윗쪽벽에 부딪힌 것이다.
     - ball의 아랫쪽 끝부분이 경계영역을 벗어나면 아랫쪽벽에 부딪힌 것이다.
 
-![exam_4_1_1](./image/exam_4_1_1_2.png)
+<p align="center">
+  <img src="./image/exam_4_1_1_2.png" alt="exam_4_1_1_1">
+</p>
 
 
 
 **실행 결과**
 
-![실행 결과](./image/exam_4_1_1_3.png)
+<p align="center">
+  <img src="./image/exam_4_1_1_3.png" alt="실행 결과">
+</p>
 
 * 경계영역을 벗어난 경우, 튕겨난다.
 * ball이 경계영역에 벗어나는 시점에 튕겨나지 않고, 일부는 영역을 벗어났다 튕겨난다.
@@ -1413,7 +1441,9 @@ BoundedBall에는 자신이 움직일 수 있는 영역 정보가 필요하다
 
 
 
-![bounce 보정](./image/chapter_4_1_1.png)
+<p align="center">
+  <img src="./image/chapter_4_1_1.png" alt="bounce 보정">
+</p>
 
  그림을 바탕으로 오른쪽 경계 충돌 후 이동 후 좌표를 계산하면 아래와 같다.
 $$
@@ -1486,12 +1516,16 @@ $$
 
 **실행 결과**
 
-![실행 결과](./image/exam_4_1_2_1.png)
+<p align="center">
+  <img src="./image/exam_4_1_2_1.png" alt="실행 결과">
+</p>
 
 * 보정식을 적용한 결과는 경계영역을 벗어나는 경우가 보이지 않는다.
 * 하지만, 여전히 아랫쪽으로 벗어날 수 있다. 이는 경계영역이 보이는 것보다 아래 있기 때문이다.
 
-![경계영역](./image/exam_4_1_2_2.png)
+<p align="center">
+  <img src="./image/exam_4_1_2_2.png" alt="경계영역">
+</p>
 
 ---
 
@@ -1594,7 +1628,9 @@ BoundedBall은 경계영역을 설정하고 해당 영역을 벗어날 경우, �
 
 또한, 경계영역은 ball에게 허용되는 반면 다른 ball이 차지한 공간의 경우 허용되지 않는 영역이다. 따라서, 공간에 대해 허용 영역이 안인지 밖이지 구별이 필요하다.
 
-![경계 영역](./image/chapter_4_3_1.png)
+<p align="center">
+  <img src="./image/chapter_4_3_1.png" alt="물체간 충돌">
+</p>
 
 * 흰색 ball을 기준으로 한다.
 * 파란색은 앞에서 정의하고 있는 world가 된다.
@@ -1612,7 +1648,9 @@ BoundedBall은 경계영역을 설정하고 해당 영역을 벗어날 경우, �
 
 * ball이 겹침은 ball 중간 거리가 두 ball의 반지름 합보다 크면 된다.
 
-![볼간 거리](./image/chapter_4_3_1_1.png)
+<p align="center">
+  <img src="./image/chapter_4_3_1_1.png" alt="볼간 거리">
+</p>
 
 * ball간 거리는
   $$
@@ -1646,7 +1684,9 @@ ball간 거리가 두 ball의 반지름 합보다 작을 경우, 두 ball은 충
 
 **실행 결과**
 
-![image-20230614114108255](./image/exam_4_3_1_1.png)
+<p align="center">
+  <img src="./image/exam_4_3_1_1.png" alt="exam_4_3_1_1">
+</p>
 
 ---
 
@@ -1654,7 +1694,9 @@ ball간 거리가 두 ball의 반지름 합보다 작을 경우, 두 ball은 충
 
 다음 그림은 ball과 box간 충돌을 나타낸 것이다.
 
-![볼과 박스간 거리](/Users/nhn/Documents/교육 과정/CannonGame2/images/볼과_박스간_거리.png)
+<p align="center">
+  <img src="./image/chapter_4_3_1_2.png" alt="볼과 박스간 거리">
+</p>
 
 $$
 \begin{align*}
@@ -1668,7 +1710,9 @@ ball과 box의 충돌 역시 복잡해 보이지는 않다. 두 중심간 거리
 
 하지만, 다음 그림을 보자.
 
-![볼과 박스간 거리2](./image/chapter_4_3_1_2.png)
+<p align="center">
+  <img src="./image/chapter_4_3_1_3.png" alt="볼과 박스간 거리">
+</p>
 
 복잡한 식을 이용하면 구할 수도 있을 것이다.
 
@@ -1678,7 +1722,9 @@ ball과 box의 충돌 역시 복잡해 보이지는 않다. 두 중심간 거리
 
 다음 그림은 두 ball의 충돌을 intersects함수로 이용할 경우를 표현한 것이다.
 
-![intersects](./image/intersects.png)
+<p align="center">
+  <img src="./image/intersects.png" alt="intersects">
+</p>
 
 실제 충돌하지는 않았지만, 충돌한 것으로 가정한다. 대신 box에도 적용 가능하여 문제를 단순화 시킬 수 있다.
 
@@ -1699,7 +1745,9 @@ ball과 box의 충돌 역시 복잡해 보이지는 않다. 두 중심간 거리
 
 **실행 결과**
 
-![image-20230614114835588](./image/exam_4_3_2_1.png)
+<p align="center">
+  <img src="./image/exam_4_3_2_1.png" alt="exam_4_3_2_1">
+</p>
 
 * ball 크기를 조절할 경우 배치가 가능하지만, 앞서보다 충돌이 많이 발생한다.
 
@@ -1720,7 +1768,9 @@ ball과 box의 충돌 역시 복잡해 보이지는 않다. 두 중심간 거리
 
 결과는 아래과 같다.
 
-![충돌](./image/exam_4_3_3_1.png)
+<p align="center">
+  <img src="./image/exam_4_3_3_1.png" alt="충돌">
+</p>
 
 ---
 
@@ -1734,7 +1784,9 @@ ball과 box의 충돌 역시 복잡해 보이지는 않다. 두 중심간 거리
 
 다음 그림은 두 ball이 충돌하였을때, 겹치는 부분을 표시한 것이다.
 
-![중첩 영역](./image/chapter_4_3_2_1.png)
+<p align="center">
+  <img src="./image/chapter_4_3_2_1.png" alt="중첩 영역">
+</p>
 
 겹침영역 번호로 하여, 1, 3, 6, 8은 진행 방향의 반대로, 2, 7은 x측을 기준으로 반대로(즉, dy를 변경), 4, 5는 y측을 기준으로 반대로 움직이도록 하면 정확하지는 않지만, 충돌 후 튕김을 구현할 수 있다.
 
@@ -1920,7 +1972,9 @@ $$
 
 Motion  클래스는 물리학이나 수학에서 말하는 Vector를 표현한 것이다.
 
-![motion](./image/motion.png)
+<p align="center">
+  <img src="./image/motion.png" alt="Motion">
+</p>
 
 ##### 필드
 
@@ -2123,7 +2177,9 @@ public class MovableBall extends Ball {
 
 2차원 공간에서의 Box는 우리가 흔히 알고 있는 사각형이다.
 
-![box](./image/box.png)
+<p align="center">
+  <img src="./image/box.png" alt="box">
+</p>
 
 * 생성 후 이동이나 정보 변경 불가
 
@@ -2172,7 +2228,9 @@ void paint(Graphics g) {...}
 
 Box 클래스에서 도형을 그리는 paint 메소드를 보면, 사각형을 그리기 위해  fillRect를 사용한다.
 
-![oval](./image/fillRect.png)
+<p align="center">
+  <img src="./image/fillRect.png" alt="fillRect">
+</p>
 
 * (x, y)는 box의 중심 좌표를 나타낸다.
 * fillRect는 우측 상단 꼭지점과 폭, 높이 정보를 필요로 한다.
@@ -2310,7 +2368,9 @@ World에는 Ball만 추가되도록 구성되어 있다. World에 Box를 추가�
 
 **실행 결과**
 
-![image-20230614230956020](./image/exam_6_1_2_1.png)
+<p align="center">
+  <img src="./image/exam_6_1_2_1.png" alt="exam_6_1_2_1">
+</p>
 
 * Box 추가에 문제는 없나?
 * Data type만 다를 뿐 동일한 작업은 문제 없나?
@@ -2342,7 +2402,9 @@ box를 관리하기 위한 필드를 추가할 뿐만 아니라 관련된 함수
 
 **실행 결과**
 
-![image-20230614231656269](./image/exam_6_1_3_1.png)
+<p align="center">
+  <img src="./image/exam_6_1_3_1.png" alt="exam_6_1_3_1">
+</p>
 
 * 새로운 종류 추가에 문제가 없는가?
 * paint에서 Object 클래스에 대해 처리가 가능한가?
@@ -2542,7 +2604,9 @@ public class Exam_7_1_2 {
 
 **실행 결과**
 
-![image-20230614234716609](./image/exam_7_1_2_1.png)
+<p align="center">
+  <img src="./image/exam_7_1_2_1.png" alt="exam_7_1_2_1">
+</p>
 
 ---
 
@@ -2614,7 +2678,9 @@ public class Exam_7_1_2 {
 
 
 
-![좌표계](./image/chapter_8_1.png)
+<p align="center">
+  <img src="./image/chapter_8_1.png" alt="좌표계">
+</p>
 
 
 
@@ -2824,8 +2890,9 @@ public class Exam_9_1_1 {
 
   * $g$ 는 Y축의 음수 방향으로 가해지는 변화량이다.
 
-  ![중력 가속도](./image/exam_9_2_1_1.png)
-
+<p align="center">
+  <img src="./image/exam_9_2_1_1.png" alt="중력가속도">
+</p>
 
 
 ---
