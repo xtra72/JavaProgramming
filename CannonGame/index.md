@@ -6,17 +6,19 @@
 
 ### 1-1. 목적
 
-* 자바 기초 과정에서 배운 내용을 연습하고 개발에 필요한 기본 지식 습득을 위한 연습을 목적으로 한다.
+* Java 기초 과정에서 배운 내용을 연습하고 개발에 필요한 기본 지식 습득을 위한 연습을 목적으로 한다.
 
 
 
 ### 1-2. 학습 범위
 
 * Java 프로그래밍 연습
-* class(클래스), interface(인터페이스)를 설계하고 구현
-* Abstract Data Type
 
+* ADT(Abstract Data Type)
 
+* ad hoc polymorphism
+
+  
 
 ### 1-3. 준비
 
@@ -33,22 +35,33 @@
 
 
 
-**참고**
+### 1-4. 참고
 
-* 프로젝트를 생성하고, 실습에 필요한 라이브러리를 설치한다.
-  * hamcrest-core-1.3.jar+
-  * junit-jupiter-api-5.9.3.jar+
-  * Junit-platform-console-standalone-1.9.3.jar+
-  * log4j-api-2.20.0.jar+
-  * log4j-core-2.20.0.jar+
-* Package 구성은 다음과 같다
-  * 소스 코드 - org.nhnacademy
-  * 테스트 코드 - test
-  * 예제 코드 - exam
+#### 1-4-1. 필수 라이브러리
+
+프로젝트를 생성하고, 실습에 필요한 라이브러리는 다음과 같다.
+
+* hamcrest-core-1.3.jar+
+
+* junit-jupiter-api-5.9.3.jar+
+
+* Junit-platform-console-standalone-1.9.3.jar+
+
+* log4j-api-2.20.0.jar+
+
+* log4j-core-2.20.0.jar+
+
+
+
+#### 1-4-2. Project Package 구성
+
+* source code - org.nhnacademy
+* test code - test
+* example code - exam
 
 
 <p align="center">
-<img src="./image/figure_1.png" alt="프로젝트 구성"/>
+  <img src="./image/figure01.png" alt="프로젝트 구성"/>
 </p>
 
 
@@ -60,15 +73,14 @@
 * accessor / mutator
 
 
-
 ### 2-1. Ball 클래스
 
 
 
-#### 정의
+#### 2-1-1. 정의
 
 <p align="center">
-  <img src="./image/ball.png" alt="Ball"/>
+  <img src="./image/figure02.png" alt="Ball"/>
 </p>
 
 
@@ -80,16 +92,13 @@
 
 ##### Field(필드)
 
-* ball 정보
-  * 중심좌표(x, y)
-    * 생성시 지정
-
-  * 반지름(radius)
-    * 생성시 지정
-
-  * 색(color)
-    * 생성시 생략 가능
-    * 기본 - 파란색
+* 중심좌표(x, y)
+  * 생성할 때 지정
+* 반지름(radius)
+  * 생성할 때 지정
+* 색(color)
+  * 생성할 때 생략 가능
+  * 기본 - 파란색
 
 
 
@@ -103,35 +112,34 @@
 
 
 
+#### 참고. Accessor와 Mutator
 
-**참고. accessor와 mutator**
-
-* accessor
+* Accessor
   * 인스턴스 필드 값을 반환
     * private 필드에 대한 접근 지원
     * 클래스 외부에서 직접적인 접근이 필요한 경우에만 지원
   * get + \<field name>
     * getRadius, getColor, ...
-  * getter
+  * Getter
 
-* mutator
+* Mutator
   * 인스턴스 필드 값을 변경
     * private 필드에 대한 변경 지원
     * 클래스 외부에서 직접적인 변경이 필요한 경우에만 지원
   * set + \<field name>
     * setRadius, setColor, ...
-  * setter
+  * Setter
 
 
 
 ---
 
-#### 문제 2-1-1. Ball 클래스를 구현하라.
+#### 문제 01. Ball 클래스를 구현하라.
 
-* x,y로 이루어진 중심점 좌표, 반지름, 색을 갖는다.
-* 중심점 좌표와 반지름은 생성시 설정한다.
-* 색은 생성시 설정할 수 있고, 기본색은 파란색으로 지정한다.
-* 각 필드 값를 요청할 수 있다.
+* x, y로 이루어진 중심점 좌표, 반지름, 색을 갖는다.
+* 중심점 좌표와 반지름은 생성할 때 설정한다.
+* 색은 생성할 때 설정할 수 있고, 기본색은 파란색으로 지정한다.
+* 각 필드 값을 요청할 수 있다.
 * 코드 중복은 최소화하라.
 * 코딩 규칙을 따라 작성한다.
 
@@ -196,7 +204,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
 import org.nhnacademy.Ball;
 
-public class Exam_2_1_1 {
+public class Exam01 {
     static final int MIN_X = 0;
     static final int MAX_X = 1000;
     static final int MIN_Y = 0;
@@ -207,12 +215,12 @@ public class Exam_2_1_1 {
     static final Color[] colors = { Color.BLUE, Color.RED, Color.WHITE,
         Color.BLACK, Color.GREEN };
 
-    Logger logger = LogManager.getLogger(Exam_2_1_1.class.getName());
+    Logger logger = LogManager.getLogger(Exam01.class.getName());
     Random random = new Random();
 
     @BeforeAll
     static void testInit() {
-        Configurator.setLevel(Exam_2_1_1.class.getName(), Level.WARN);
+        Configurator.setLevel(Exam01.class.getName(), Level.WARN);
     }
 
     @Test
@@ -242,12 +250,12 @@ public class Exam_2_1_1 {
     * 테스트 코드가 실행되기 전에 실행됨.
   * Test
     * 테스트 코드
-    * 여러개의 테스트 함수를 정의할 수 있음
+    * 여러 개의 테스트 함수를 정의할 수 있음
   * assertAll
-    * 두번째 매개변수부터 주어지는 조건들이 모두 통과될 경우에만 통과
-    * 두번째 매개변수부터는 Executable이 와야하며, 순차적으로 실행됨
+    * 두 번째 매개변수부터 주어지는 조건들이 모두 통과될 경우에만 통과
+    * 두 번째 매개변수부터는 Executable이 와야 하며, 순차적으로 실행됨
   * assertEquals
-    * 두개의 매개변수가 equals로 동일해야 함.
+    * 두 개의 매개변수가 equals로 동일해야 함.
 * Log4J2
   * LogManager
     * logger 관리
@@ -277,10 +285,10 @@ public class Exam_2_1_1 {
 
 
 
-#### 그리기
+#### 2-1-2. 그리기
 
-* 화면에 그리기는 Java awt를 사용하므로, awt에서 요구하는 형식에 맞춰 구성
-  * awt에서는 component를 다시 그려야 하는 시점에 paint 함수를 호출
+* 화면에 그리기는 Java AWT를 사용하므로, AWT에서 요구하는 형식에 맞춰 구성
+  * AWT에서는 component를 다시 그려야 하는 시점에 paint 함수를 호출
   * paint함수에서 매개변수로 전달되는  Graphics를 이용해 그리기 가능
 * ball을 화면상에 표시하기 위한 함수 정의 필요
   * 그리기(paint)
@@ -288,24 +296,24 @@ public class Exam_2_1_1 {
 
 
 
-**참고. awt를 이용해 ball 그리기**
+**참고. AWT를 이용해 ball 그리기**
 
 * awt library에서 원을 그리기 위해  fillOval 사용
-* Graphics 클래스에서는 원을 그리기 위한 별도의 메소드를 제공하지 않고 타원 그리기 메소드 이용
+* Graphics 클래스에서는 원을 그리기 위한 별도의 방법을 제공하지 않고 타원 그리기 방법 이용
 * 원은 폭과 높이가 같은 타원
 
 <p align="center">
-<img src="./image/oval.png" alt="oval"/>
+<img src="./image/figure03.png" alt="oval"/>
 </p>
 
 ---
 
-#### 문제 2-1-2. ball을 화면에 출력하기.
+#### 문제 02. ball을 화면에 출력하기.
 
 * awt graphics context를 매개변수로 받아 그릴 수 있도록 함수를 추가한다.
-* 도형의 색은 graphics context에서 설정 가능하다. (setColor)
+* 도형의 색은 graphics context에서 설정할 수 있다. (setColor)
 * 일반적으로 외부의 자원을 활용할 경우, 자원 활용 후 활용 전 설정을 최대한 복원해 두는 것이 좋다.
-  따라서, graphics context의 색 설정을 변경하기 전에 기존 색을 저장 하였다 복원에 사용하도록 구성한다.
+  따라서, graphics context의 색 설정을 변경하기 전에 기존 색을 저장하였다 복원에 사용하도록 구성한다.
 
 
 
@@ -388,7 +396,7 @@ import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.api.TestInfo;
 import org.nhnacademy.Ball;
 
-public class Exam_2_1_2 {
+public class Exam02 {
     static final int MIN_X = 0;
     static final int MAX_X = 1000;
     static final int MIN_Y = 0;
@@ -399,13 +407,13 @@ public class Exam_2_1_2 {
     static final Color[] colors = { Color.BLUE, Color.RED, Color.WHITE,
         Color.BLACK, Color.GREEN };
 
-    Logger logger = LogManager.getLogger(Exam_2_1_2.class.getName());
+    Logger logger = LogManager.getLogger(Exam02.class.getName());
     Random random = new Random();
     DummyGraphics graphics = new DummyGraphics();
 
     @BeforeAll
     static void testInit() {
-        Configurator.setLevel(Exam_2_1_2.class.getName(), Level.ALL);
+        Configurator.setLevel(Exam02.class.getName(), Level.ALL);
     }
 
     @RepeatedTest(10)
@@ -453,7 +461,7 @@ public class Exam_2_1_2 {
 
 ### 2-2. World 클래스
 
-#### 정의
+#### 2-2-1. 정의
 
 * ball이 존재할 공간이면서 모니터상에 출력될 영역
 * Java graphics library인 swing의 JPanel component 확장
@@ -474,9 +482,9 @@ public class Exam_2_1_2 {
 * ball을 관리하기 위한 함수
   * ball 추가(add)
   * ball 제거(remove)
-  * ball 갯수(getBallCount)
+  * ball 개수(getBallCount)
   * 특정 번째 ball 가져오기 (getBall)
-  * 특정 번째 ball 제가하기 (removeBall)
+  * 특정 번째 ball 제거하기 (removeBall)
 * 화면 출력
   * 그리기(paint)
     * Panel을 다시 그려야 하는 시점에 ball을 그릴 수 있도록 **그리기에 대한 재정의** 필요
@@ -485,7 +493,7 @@ public class Exam_2_1_2 {
 
 ---
 
-#### 문제 2-2-1. World 클래스를 구현하라.
+#### 문제 03. World 클래스를 구현하라.
 
 * JPanel을 확장하여 정의한다.
 
@@ -508,14 +516,14 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.nhnacademy.World;
 
-public class Exam_2_2_1 {
+public class Exam03 {
 
     static final int WIDTH = 400;
     static final int HEIGHT = 300;
 
     public static void main(String [] args) {
-        Logger logger = LogManager.getLogger(Exam_2_2_1.class.getName());
-        Configurator.setLevel(Exam_2_2_1.class.getName(), Level.ALL);
+        Logger logger = LogManager.getLogger(Exam03.class.getName());
+        Configurator.setLevel(Exam03.class.getName(), Level.ALL);
 
         JFrame frame = new JFrame();
         frame.setSize(WIDTH, HEIGHT);
@@ -547,9 +555,9 @@ public class Exam_2_2_1 {
     * Window 크기를 설정한다.
   * addWindowListener
     * window에 발생하는 이벤트를 frame에 전달한다.
-    * windowClosing 설정을 통해 close 이벤트 생성시 System.exit(0)을 이용해 프로그램을 종료한다.
+    * windowClosing 설정을 통해 close 이벤트 생성할 때 System.exit(0)을 이용해 프로그램을 종료한다.
   * add
-    * world는 JPanel을 확장하여 정의하였으므로, awt component 이다.
+    * world는 JPanel을 확장하여 정의하였으므로, awt component이다.
     * frame에서 관리하는 component로 추가한다.
   * setEnabled
     * Component 클래스에 정의된 함수로서, component 사용 여부를 설정한다.
@@ -562,10 +570,10 @@ public class Exam_2_2_1 {
 * 실행 후 아무런 그림이 없는 window가 실행된다.
 
 <p align="center">
-  <img src="./image/exam_2_2_1_1.png" alg="실행 결과"/>
+  <img src="./image/figure04.png" alg="실행 결과"/>
 </p>
 
-* log4j2를 이용해 로그가 출력되도록 구성하였으므로, 실행시 다음과 같은 로그가 출력된다.
+* log4j2를 이용해 로그가 출력되도록 구성하였으므로, 실행할 때 다음과 같은 로그가 출력된다.
 
   ~~~sh
   10:15:01.456 [main] INFO  exam.Exam_2_2_1 - world 생성 완료
@@ -577,26 +585,26 @@ public class Exam_2_2_1 {
 
 
 
-World 클래스를 정의하고, 테스트 코드를 이용해 world가 생성됨을 확인 하였다.
+World 클래스를 정의하고, 테스트 코드를 이용해 world가 생성됨을 확인하였다.
 
-이제 개발하려는 게임의 가장 기본이 되는 world와 ball이 정의 되었으므로, world를 이용해 ball을 출력해 보자.
+이제 개발하려는 게임의 가장 기본이 되는 world와 ball이 정의되었으므로, world를 이용해 ball을 출력해 보자.
 
 
 
 ---
 
-#### 문제 2-2-2. world를 생성하고, ball을 추가해 출력하라.
+#### 문제 04. world를 생성하고, ball을 추가해 출력하라.
 
 * world
-  * 크기는 가로 400 세로 300으로 한다.
+  * 크기는 가로 400, 세로 300으로 한다.
 
 * ball
   * 10개를 생성하여 추가한다.
   * 크기는 10에서 50으로 제한한다.
-  * 위치는 world내 임의 위치로 한다.
+  * 위치는 world 내 임의 위치로 한다.
     * world를 벗어나거나 경계에 걸쳐 출력되지 않도록 한다.
 
-  * 다섯가지 색중 임의의 하나를 적용한다.
+  * 다섯 가지 색 중 임의의 하나를 적용한다.
     * BLUE, RD, WHITE, BLACK, GREEN 
 
 
@@ -613,7 +621,7 @@ World 클래스를 정의하고, 테스트 코드를 이용해 world가 생성�
 * 테스트 코드를 실행한 결과는 다음과 같이 출력된다.
 
 <p align="center">
-  <img src="./image/world_test.png" alt="exam_2_2_2_1">
+  <img src="./image/figure05.png" alt="exam_2_2_2_1">
 </p>
 
 * 로그 출력은 다음과 같다.
@@ -640,67 +648,67 @@ World 클래스를 정의하고, 테스트 코드를 이용해 world가 생성�
 
 ## 3. Movable Ball World
 
-Ball과 World를 만들어 보았다. 하지만, 단순히 다양한 모양의 ball을 그려주는 과정만 수행하였다. 이제는 ball을 이동 시키며 이와 관련된 여러가지 것들을 알아보도록 하자
+Ball과 World를 만들어 보았다. 하지만, 단순히 다양한 모양의 ball을 그려주는 과정만 수행하였다. 이제는 ball을 이동시키며 이와 관련된 여러 가지 것들을 알아보도록 하자
 
 
 
 ball의 이동은 시간이 변화함에 따라 위치가 변화함을 말한다.
 
-공간에서 ball의 이동을 나타내기 위해서는 단위 시간과 단위 시간 동안의 이동거리가 있어야 된다.
+공간에서 ball의 이동을 나타내기 위해서는 단위 시간과 단위 시간 동안의 이동 거리가 있어야 한다.
 
-단위 시간 dt는 화면을 구성하는 시간 간격 또는 행위를 수행할 의미 있는 단위 시간으로  Ball이나 World에서는 Ball을 이동 시키고 화면을 출력하는 과정이 될 것이다.
+단위 시간 dt는 화면을 구성하는 시간 간격 또는 행위를 수행할 의미 있는 단위 시간으로  Ball이나 World에서는 Ball을 이동시키고 화면을 출력하는 과정이 될 것이다.
 
 <p align="center">
-  <img src="./image/chapter_3_1.png" alt="단위 시간 변화">
+  <img src="./image/figure06.png" alt="단위 시간 변화">
 </p>
 
 
 
 ### 3-1. MovableBall 클래스
 
-#### 정의
+#### 3-1-1. 정의
 
 * Ball 클래스
 
 * 공간(world)에서 이동시킬 수 있다.
 
   * 특정 위치로 옮길 수 있다.
-  * 설정된 변화량 만큼 이동하여 옮길 수 있다.
+  * 설정된 변화량만큼 이동하여 옮길 수 있다.
 
 * 변화량을 가진다.
 
-  * 이동 명령(move)에 따라 지정된 변화량 만큼 이동한다.
+  * 이동 명령(move)에 따라 지정된 변화량만큼 이동한다.
 
 <p align="center">
-  <img src="./image/chapter_3_1_1.png" alt="Movable Ball">
+  <img src="./image/figure07.png" alt="Movable Ball">
 </p>
 
-  * 변화량은 변경 가능하다.
+  * 변화량은 변경가능하다.
 
 
 
 ##### 필드
 
-* 단위 시간동안의 x축 이동량을 나타내는 $dx$(dx)
-* 단위 시간동안의 y축 이동량을 나타내는 $dy$(dy)
+* 단위 시간 동안의 x축 이동량을 나타내는 $dx$(dx)
+* 단위 시간 동안의 y축 이동량을 나타내는 $dy$(dy)
 
 
 
 ##### 함수
 
 * 단위 시간당 이동량 설정하고 얻어오기(setDX, setDY, getDX, getDY)
-* 단위 시간만큼 이동 시키기(move)
+* 단위 시간만큼 이동시키기(move)
 * 특정 위치로 옮기기(moveTo)
 
 
 
 ---
 
-#### 문제 3-1-1. MovableBall 클래스를 구현하라
+#### 문제 05. MovableBall 클래스를 구현하라
 
-* ball의 위치 정보 x,y이고, Ball 클래스의 private 정보이다.
-* MovableBall 클래스 이동 구현을 위해서는 x, y을 변경할 수 있는 mutator가 필요하다.
-* Ball 클래스에 x,y에 대한 mutator를 추가한다. 단, package 외부에서는 접근이 되지 않도록 해야 한다.
+* ball의 위치 정보 x, y이고, Ball 클래스의 private 정보이다.
+* MovableBall 클래스 이동 구현을 위해서는 x, y를 변경할 수 있는 mutator가 필요하다.
+* Ball 클래스에 x, y에 대한 mutator를 추가한다. 단, package 외부에서는 접근이 되지 않도록 해야 한다.
 
 
 
@@ -825,7 +833,7 @@ public class Exam_3_1_1 {
 
  **물음**
 
-* 테스트 코드에서 location을 따로 정의해서 사용하는 이유는? x,y를 직접 사용할 경우, 어떠한 문제가 있는가?
+* 테스트 코드에서 location을 따로 정의해서 사용하는 이유는? x, y를 직접 사용할 경우, 어떠한 문제가 있는가?
 
 
 
@@ -835,12 +843,12 @@ public class Exam_3_1_1 {
 
 ### 3-2. MovableWorld 클래스
 
-#### 정의
+#### 3-2-1. 정의
 
 * World 클래스
-* 공간에서 ball을 단위 시간 단위로 이동 시킨다
+* 공간에서 ball을 단위 시간 단위로 이동시킨다
   * 단위 시간 단위 이동이란?
-    * 추가되어 있는 ball을 한번 이동 시키는걸 말한다.
+    * 추가된 ball을 한번 이동시키는 걸 말한다.
 
 
 
@@ -858,14 +866,14 @@ public class Exam_3_1_1 {
   * 설정한 maxMovementCount는 초기화하지 않는다.
 
 * 단위 시간 단위 이동(move)
-  * 호출시 등록되어 있는 볼 중에서 이동 가능한 MovableBall만 1회 이동 시킨다
+  * 호출 시 등록되어있는 볼 중에서 이동가능한 MovableBall만 1회 이동시킨다
   * 이동하고 나면 화면을 다시 그려야 한다.
-    * awt에서는 component를 다시  그리기 위해 repaint 함수 지원
+    * AWT에서는 component를 다시  그리기 위해 repaint 함수 지원
 
   * 이동 횟수를 저장한다.
   * 최대 이동 횟수를 넘지는 않는다.
 
-* 지정한 횟수 또는 시간동안 ball을 이동 시킨다. (run)
+* 지정한 횟수 또는 시간 동안 ball을 이동시킨다. (run)
 
   * 최대 이동 횟수가 0이면, 계속 이동한다.
 
@@ -877,7 +885,7 @@ public class Exam_3_1_1 {
 
 ---
 
-#### 문제 3-2-1. MovableWorld 클래스를 구현하라.
+#### 문제 06. MovableWorld 클래스를 구현하라.
 
 * World 클래스의 필드를 직접 접근해야 할 경우, World 클래스를 수정하고 직접적인 접근은 방지하라.
 * 테스트 코드를 이용해 확인한다.
@@ -1019,7 +1027,7 @@ public class Exam_3_2_1 {
 
 
 
-MovableWorld 클래스를 정의하고, 테스트 코드를 이용해 기본 동작은 확인 하였다.
+MovableWorld 클래스를 정의하고, 테스트 코드를 이용해 기본 동작은 확인하였다.
 
  실제 화면상에도 동일하게 동작하는지 확인해 보자.
 
@@ -1027,17 +1035,17 @@ MovableWorld 클래스를 정의하고, 테스트 코드를 이용해 기본 동
 
 ---
 
-#### 문제 3-2-2. MovableWorld 클래스 구동을 위한 프로그램을 만들어 확인하라.
+#### 문제 07. MovableWorld 클래스 구동을 위한 프로그램을 만들어 확인하라.
 
 * JFrame을 이용해 window를 만들고, MovableWorld를 component로 사용해 적용하라.
   * Window 크기는 가로 400, 세로 300으로 한다.
 
 * 10개의 ball을 생성하라.
   * 시작 위치 window 내로 제한한다.
-  * 크기는 반지름 10~50사이로 한다.
-  * 변화량은 가로, 세로 10에서 30사이로 한다.
-  * ball간 충첩되지 않도록 한다.
-    * ball간 충첩은 ball에서 지원하는 함수로 구현할 수 있다.
+  * 크기는 반지름 10~50 사이로 한다.
+  * 변화량은 가로, 세로 10에서 30 사이로 한다.
+  * ball 간 중첩되지 않도록 한다.
+    * ball 간 중첩은 ball에서 지원하는 함수로 구현할 수 있다.
 
 
 
@@ -1049,19 +1057,19 @@ MovableWorld 클래스를 정의하고, 테스트 코드를 이용해 기본 동
 * 이동 횟수가 적을 경우, 다음과 같이 멈춰 있다.
 
 <p align="center">
-  <img src="./image/exam_3_2_2_1.png" alt="이동 횟수 적음">
+  <img src="./image/figure08.png" alt="이동 횟수 적음">
 </p>
 
-* 이동 횟수가 조금만 늘어도 화면에는 몇개 보이지 않는다.
+* 이동 횟수가 조금만 늘어도 화면에는 몇 개 보이지 않는다.
 
 <p align="center">
-  <img src="./image/exam_3_2_2_2.png" alt="이동 횟수 중간">
+  <img src="./image/figure09.png" alt="이동 횟수 중간">
 </p>
 
 * 이동 횟수가 조금만 많아져도 출력되는 ball은 하나도 없다.
 
 <p align="center">
-  <img src="./image/exam_3_2_2_3.png" alt="이동 횟수 많음">
+  <img src="./image/figure10.png" alt="이동 횟수 많음">
 </p>
 
 **물음**
@@ -1108,7 +1116,7 @@ MovableWorld 클래스를 정의하고, 테스트 코드를 이용해 기본 동
   * ball이 공간을 벗어난다.
   * ball의 이동이 좌측 하단에서 우측 상단이 아니라 좌측 상단에서 우측 하단으로 의도와 다르게 움직인다.
 
-  무엇인 문제일가?
+  무엇이 문제일?
 
 ---
 
@@ -1117,18 +1125,18 @@ MovableWorld 클래스를 정의하고, 테스트 코드를 이용해 기본 동
 * MovableWorld는 아래 그림과 같이  $dt$ 간격마다 ball을 이동시킴
 
 <p align="center">
-  <img src="./image/zero_dt.png" alt="Zero DT">
+  <img src="./image/figure11.png" alt="Zero DT">
 </p>
 
 * 앞에서 구현한 MovableWorld에서는 $dt$에 대해 정의하지 않음
 
-* $dt$ 가 아주 작은 값이 주어지거나 0이라면 결과는  어떻게 될까?
+* $dt$ 가 아주 작은 값을 주거나 0이라면 결과는 어떻게 될까?
 
 
 
 ---
 
-#### 문제 3-3-1. 다음 코드는 MovableBall을 수정하여 ball 이동이 보이지 않는 문제에 대해 확인해 보자.
+#### 문제 08. 다음 코드는 MovableBall을 수정하여 ball 이동이 보이지 않는 문제에 관해 확인해 보자.
 
 MovableWorldTest에서는 dt를 설정하고 있지 않다. MovableBall을 수정하여 다시 확인해 보자.
 
@@ -1176,9 +1184,9 @@ public class MovableBall extends Ball {
 18:16:25.276 [main] DEBUG MovableWorld - finished : 1686647785276 - 10
 ~~~
 
- 각 라인은 화면이 출력될때마다 시간과 ball의 위치를 나타낸다.
+ 각 라인은 화면이 출력될 때마다 시간과 ball의 위치를 나타낸다.
 
-시간은 밀리초(milliseconds) 단위로 표시되는데, ball은 100번 이동하는 동안 최대 10밀리초가 소모되지 않았음을 알 수 있다.
+시간은 밀리초(milliseconds) 단위로 표시되는데, ball은 100번 이동하는 동안 최대 10 밀리초가 소모되지 않았음을 알 수 있다.
 
 ---
 
@@ -1188,17 +1196,17 @@ public class MovableBall extends Ball {
 
 단위 시간을 추가해 보자.
 
-단위 시간은 ball의 이동 간격 사이 일정 시간 기다림으로 구현 가능하며, Thread.sleep()을 이용해 밀리초 단위로 설정 가능하다
+단위 시간은 ball의 이동 간격 사이 일정 시간 기다림으로 구현할 수 있으며, Thread.sleep()을 이용해 밀리초 단위로 설정할 수 있다
 
 * 단위 시간 저장을 위한 필드를 추가한다(dt)
 * 단위 시간 설정 관련 함수를 추가한다.(setDT, getDT)
-* run함수를 수정하여, move 후 지정된 단위 시간만큼 대기 상태가 되도록 한다.
+* run 함수를 수정하여, move 후 지정된 단위 시간만큼 대기 상태가 되도록 한다.
 
 
 
 ---
 
-#### 문제 3-3-2. MovableWorld 클래스에 단위 시간을 추가하라
+#### 문제 09. MovableWorld 클래스에 단위 시간을 추가하라
 
 *  move 함수가 호출된 후 설정된 단위 시간만큼 대기한다.
 
@@ -1233,15 +1241,15 @@ public class MovableBall extends Ball {
 22:28:11.599 [main] DEBUG MovableWorld - finished : 1686662891599 - 1262
 ~~~
 
-* 100회 이동하는 동안 1262밀리초 소모
+* 100회 이동하는 동안 1,262밀리초 소모
 
-* 단위 시간을 10밀리초로 설정하였기에 계산상으로는 1000밀리초 소모되어야 정상
+* 단위 시간을 10밀리초로 설정하였기에 계산상으로는 1,000밀리초 소모되어야 정상
 
-  * move 1회 호출 후 무조건 10밀리초 대기(마지막도 동일함)
+  * move 1회 호출 후 무조건 10 밀리초 대기(마지막도 동일함)
 
 **물음**
 
-* 로그로 출력된 소요 시간이 1262 밀리초인 이유는?
+* 로그로 출력된 소요 시간이 1,262밀리초인 이유는?
 
 ---
 
@@ -1249,33 +1257,33 @@ public class MovableBall extends Ball {
 
 수행 시간은 다음 그림과 같다.
 
-move간 단위 시간(dt)로 줄 경우 실제 수행시간은 $T=dt * n$ 이 아니다.
+move 간 단위 시간(dt)로 줄 경우 실제 수행시간은 $T=dt * n$ 이 아니다.
 
 이는 move 처리시간을 감안하지 않을 것으로서 실제 수행 시간은 $T = (\alpha + dt) * n$ 가 된다.
 
 <p align="center">
-  <img src="./image/chapter_3_3_1_1.png" alt="단위시간 오차">
+  <img src="./image/figure12.png" alt="단위시간 오차">
 </p>
 
 ---
 
-#### 문제 3-3-3. MovableWorld에서 move후 변경되는 시간의 오차를 최소화 하라.
+#### 문제 10. MovableWorld에서 move 후 변경되는 시간의 오차를 최소화하라.
 
 이 문제는 간단하다.
 
-move를 수행한 후 다음 move를 호출하기까지의 대기 시간을 단위 시간이 아닌 예정 시간까지 남은 시간으로 하면된다.
+move를 수행한 후 다음 move를 호출하기까지의 대기 시간을 단위 시간이 아닌 예정 시간까지 남은 시간으로 하면 된다.
 
-다시 말해, move와 다시 그리기 등의 추가 작업을 위해 1ms를 소비했다고 한다면, 다음 move을 위해 대기 시간은 단위 시간 - 1이 되어야 할 것이다.
+다시 말해, move와 다시 그리기 등의 추가 작업을 위해 1ms를 소비했다고 한다면, 다음 move를 위해 대기 시간은 단위 시간 - 1이 되어야 할 것이다.
 
 
 
 다음 그림은 실제 수행 작업을 고려한 단위 시간을 나타낸 것이다.
 
 <p align="center">
-  <img src="./image/exam_3_3_3_1.png" alt="단위시간 오차 보정">
+  <img src="./image/figure13.png" alt="단위시간 오차 보정">
 </p>
 
-수정한 결과가 아래와 같이 출력되는지 확인해보자.
+수정한 결과가 아래와 같이 출력되는지 확인해 보자.
 
 **로그 출력**
 
@@ -1305,7 +1313,7 @@ move를 수행한 후 다음 move를 호출하기까지의 대기 시간을 단�
 
 
 
-결과는 1001밀리초로 거의 비슷한 결과를 보인다. 나머지 오차는 단위 문제 및 기타 연산의 영향으로 차이날 수 있다.
+결과는 1,001밀리초로 거의 비슷한 결과를 보인다. 나머지 오차는 단위 문제 및 기타 연산의 영향으로 차이 날 수 있다.
 
 **물음**
 
@@ -1325,42 +1333,42 @@ move를 수행한 후 다음 move를 호출하기까지의 대기 시간을 단�
 
 
 
-ball은 시간이 흐름에 따라 지정된 방향으로 이동한다. 그리고, 정해진 공간을 벗어 나더라도 이를 알지 못하고 계속 이동해 버려 결국에는 공간을 벗어나 보이지 않게 된다.
+ball은 시간이 흐름에 따라 지정된 방향으로 이동한다. 그리고, 정해진 공간을 벗어나더라도 이를 알지 못하고 계속 이동해 버려 결국에는 공간을 벗어나 보이지 않게 된다.
 
 경계가 있는 세상이란 정해진 공간의 외곽에는 보이지 않는 벽으로 구성되어 있고, 벽에 ball이 부딪칠 경우 멈추거나 튕겨 나와야 한다.
 
-사각의 경계가 있는 세상에서 ball이 벽에 부딪치는 경우는 아래 그림과 같을 것이다.
+사각의 경계가 있는 세상에서 ball이 벽에 부딪히는 경우는 아래 그림과 같을 것이다.
 
-<img src="./image/chapter_4_1.png" alt="닫힌 공간에서의 볼"/>
+<img src="./image/figure14.png" alt="닫힌 공간에서의 볼"/>
 
 
 
 이를 앞에서 설명한 위치 변화로 표현하면 다음과 같다.
 
-1. 왼쪽벽 : (dx, dy) -> (-dx, dy)
-2. 아래쪽벽 : (dx, dy) -> (dx, -dy)
-3. 오른쪽벽 : (dx, dy) -> (-dx, dy)
-4. 윗쪽벽 : (dx, dy) -> (dx, -dy)
+1. 왼쪽 벽 : (dx, dy) -> (-dx, dy)
+2. 아래쪽 벽 : (dx, dy) -> (dx, -dy)
+3. 오른쪽 벽 : (dx, dy) -> (-dx, dy)
+4. 위쪽 벽 : (dx, dy) -> (dx, -dy)
 
 
 
-설명에 따라 ball이 벽에 부딪혔을 경우 ball이 가지고 있던 단위 변화량만 변경해 주면된다.
+설명에 따라 ball이 벽에 부딪혔을 경우 ball이 가지고 있던 단위 변화량만 변경해서 주면 된다.
 
-이제 결정이 필요하다. 누가 이작업을 해줄 것인가? ball? world?
+이제 결정이 필요하다. 누가 이 작업을 해줄 것인가? ball? world?
 
-ball 스스로가 변경 작업을 해야 한다면 충돌감지를 판단할 수 있는 정보가 제공되어야 할 것이고, world가 변경 작업을 도와 준다면 ball의 위치를 항상 감시해야 될 것이다.
+ball 스스로가 변경 작업을 해야 한다면 충돌감지를 판단할 수 있는 정보가 제공되어야 할 것이고, world가 변경 작업을 도와준다면 ball의 위치를 항상 감시해야 할 것이다.
 
-두가지 방법 모두 만들어 보도록 하자.
+두 가지 방법 모두 만들어 보도록 하자.
 
 
 
 ### 4-1. BoundedBall 클래스
 
-#### 정의
+#### 4-1-1. 정의
 
 * 경계영역 정보를 가진다.
 * 경계영역은 벽으로 막혀 있다.
-* 벽에 부딪히면 툉겨 난다.
+* 벽에 부딪히면 튕겨 난다.
 * 벽은 무한히 단단하여 부딪힌 속도로 튕겨져 나온다.
 
 
@@ -1381,7 +1389,7 @@ BoundedBall에는 자신이 움직일 수 있는 영역 정보가 필요하다
 
   * 이동 후 경계를 벗어났는지 확인한다.(isOutOfBounds)
 
-* 이동중 경계영역을 만난 경우, 추가 동작을 한다.(move)
+* 이동 중 경계영역을 만난 경우, 추가 동작을 한다.(move)
 
 * 경계를 벗어 경우 벽에서 튕긴다.(bounce)
 
@@ -1391,33 +1399,33 @@ BoundedBall에는 자신이 움직일 수 있는 영역 정보가 필요하다
 
 ---
 
-#### 문제 4-1-1. BoundedBall 클래스를 구현하라.
+#### 문제 11. BoundedBall 클래스를 구현하라.
 
 - 경계영역은 사각형으로 설정한다.
 
-  - awt에서 Rectangle 클래스를 지원한다.
-  - Rectangle 클래스에는 두개의 사각형이 겹쳤는지 확인 하거나, 겹친 영역을 확인할 수 있는 함수가 제공된다.
+  - AWT에서 Rectangle 클래스를 지원한다.
+  - Rectangle 클래스에는 두 개의 사각형이 겹쳤는지 확인하거나, 겹친 영역을 확인할 수 있는 함수가 제공된다.
   -  ball과 경계영역이 겹치는 것은  ball을 둘러싸는 최소한의 사각형이 경계영역과 겹치는 것이 동일하다.
   - 특정한 점이 사격형을 벗어난 것은 contains 함수로도 알 수 있다.
 
 <p align="center">
-  <img src="./image/exam_4_1_1_1.png" alt="exam_4_1_1_1">
+  <img src="./image/figure15.png" alt="exam_4_1_1_1">
 </p>
 
 - 벽에 튕기는 것은 다음의 경우로 분류된다.
 
   - 왼쪽이나 오른쪽 벽에 부딪힐 경우, X의 이동 방향이 변경된다. 즉, X축의 변화량 $dx$가 변경된다.
 
-    - ball의 왼쪽 끝부분이 경계영역을 벗어나면 왼쪽벽에 부딪힌 것이다.
-    - ball의 오른쪽 끝부분이 경계영역을 벗어나면 오른쪽벽에 부딪힌 것이다.
+    - ball의 왼쪽 끝부분이 경계영역을 벗어나면 왼쪽 벽에 부딪힌 것이다.
+    - ball의 오른쪽 끝부분이 경계영역을 벗어나면 오른쪽 벽에 부딪힌 것이다.
 
-  - 윗쪽이나 아랫쪽 벽에 부딪힐 경우, Y의 이동 방향이 변경된다. 즉, Y축의 변화량 $dy$가 변경된다.
+  - 위쪽이나 아랫 쪽 벽에 부딪힐 경우, Y의 이동 방향이 변경된다. 즉, Y축의 변화량 $dy$가 변경된다.
 
-    - ball의 윗쪽 끝부분이 경계영역을 벗어나면 윗쪽벽에 부딪힌 것이다.
-    - ball의 아랫쪽 끝부분이 경계영역을 벗어나면 아랫쪽벽에 부딪힌 것이다.
+    - ball의 위쪽 끝부분이 경계영역을 벗어나면 위쪽 벽에 부딪힌 것이다.
+    - ball의 아래쪽 끝부분이 경계영역을 벗어나면 아래쪽 벽에 부딪힌 것이다.
 
 <p align="center">
-  <img src="./image/exam_4_1_1_2.png" alt="exam_4_1_1_1">
+  <img src="./image/figure16.png" alt="exam_4_1_1_1">
 </p>
 
 
@@ -1425,11 +1433,11 @@ BoundedBall에는 자신이 움직일 수 있는 영역 정보가 필요하다
 **실행 결과**
 
 <p align="center">
-  <img src="./image/exam_4_1_1_3.png" alt="실행 결과">
+  <img src="./image/figure17.png" alt="실행 결과">
 </p>
 
-* 경계영역을 벗어난 경우, 튕겨난다.
-* ball이 경계영역에 벗어나는 시점에 튕겨나지 않고, 일부는 영역을 벗어났다 튕겨난다.
+* 경계영역을 벗어난 경우, 튕겨 나간다.
+* ball이 경계영역에 벗어나는 시점에 튕겨 나가지 않고, 일부는 영역을 벗어났다 튕겨 나간다.
 * 왜 그럴까? 해결 방법은?
 
 
@@ -1437,12 +1445,12 @@ BoundedBall에는 자신이 움직일 수 있는 영역 정보가 필요하다
 
 
 
-오른쪽 경계에 부딪힌 후 팅겨난 경우는 아래 그림과 같다.
+오른쪽 경계에 부딪힌 후 튕겨 난 경우는 아래 그림과 같다.
 
 
 
 <p align="center">
-  <img src="./image/chapter_4_1_1.png" alt="bounce 보정">
+  <img src="./image/figure18.png" alt="bounce 보정">
 </p>
 
  그림을 바탕으로 오른쪽 경계 충돌 후 이동 후 좌표를 계산하면 아래와 같다.
@@ -1472,7 +1480,7 @@ x_3 &= X_L + (|d_x| - (x_1 - X_L))\\
 y_3 &= y_1 + d_y\\
 \end{align*}
 $$
-그림을 바탕으로 윗쪽 경계 충돌 후 이동 후 좌표를 계산하면 아래와 같다.
+그림을 바탕으로 위쪽 경계 충돌 후 이동 후 좌표를 계산하면 아래와 같다.
 $$
 \begin{align*}
 Y_T & = Y_2 - r\\
@@ -1486,7 +1494,7 @@ x_3 &= x_1 + d_x\\
 $$
 
 
- 그림을 바탕으로 아랫쪽 경계 충돌 후 이동 후 좌표를 계산하면 아래와 같다.
+ 그림을 바탕으로 아래쪽 경계 충돌 후 이동 후 좌표를 계산하면 아래와 같다.
 $$
 \begin{align*}
 Y_B & = Y_1 + r\\
@@ -1506,25 +1514,25 @@ $$
 
 ---
 
-#### 문제 4-1-2. 경계영역을 벗어나지 않도록 수정하라.(어려우면  넘어가기)
+#### 문제 12. 경계영역을 벗어나지 않도록 수정하라.(어려우면  넘어가기)
 
 * 경계 영역을 벗어난 경우, 추가적인 처리를 통해 위치를 보정하라.
-* Rectangle의 contains로 경계 검사를 할때, 해당 점이 경계 위에 존재할때 어떻게 처리할지 결정해야 한다.
-* 위 식에서 변화량($|d_x|$, $|d_y|$)는 절대값을 나타냄을 주의하라.(다행히 최종 계산에는 사용되지 않음)
+* Rectangle의 contains로 경계 검사를 할 때, 해당 점이 경계 위에 존재할 때 어떻게 처리할지 결정해야 한다.
+* 위 식에서 변화량($|d_x|$, $|d_y|$)는 절댓값을 나타냄을 주의하라.(다행히 최종 계산에는 사용되지 않음)
 
 
 
 **실행 결과**
 
 <p align="center">
-  <img src="./image/exam_4_1_2_1.png" alt="실행 결과">
+  <img src="./image/figure19.png" alt="실행 결과">
 </p>
 
 * 보정식을 적용한 결과는 경계영역을 벗어나는 경우가 보이지 않는다.
-* 하지만, 여전히 아랫쪽으로 벗어날 수 있다. 이는 경계영역이 보이는 것보다 아래 있기 때문이다.
+* 하지만, 여전히 아래쪽으로 벗어날 수 있다. 이는 경계영역이 보이는 것보다 아래 있기 때문이다.
 
 <p align="center">
-  <img src="./image/exam_4_1_2_2.png" alt="경계영역">
+  <img src="./image/figure20.png" alt="경계영역">
 </p>
 
 ---
@@ -1533,25 +1541,25 @@ $$
 
 ### 4-2. BoundedWorld 클래스
 
-#### 정의
+#### 4-2-1. 정의
 
-BoundedBall 클래스를 구현함으로써 ball을 이용한 닫힌 세상에서의 움직임을 확인해 보았다. 그럼, ball이 아닌 world를 이용한 경우는 어떠한지 확인해 보자.
+BoundedBall 클래스를 구현함으로써 ball을 이용한 닫힌 세상에서 움직임을 확인해 보았다. 그럼, ball이 아닌 world를 이용한 경우는 어떠한지 확인해 보자.
 
 
 
 움직이는 ball이 주어진 공간을 벗어나는지에 대해 world에서는 지속적인 감시를 통해 알 수 있다.
 
-또한, 현재까지 구현에서 world는 ball의 움직임을 관리하고 있으므로 더욱 더 쉽게 구현할 수 있고 이를 BoundedWorld라고 하자.
+또한, 현재까지 구현에서 world는 ball의 움직임을 관리하고 있으므로 더욱더 쉽게 구현할 수 있고 이를 BoundedWorld라고 하자.
 
 
 
-BoundedWorld는 ball이 허용 공간을 벗어났는지 확인하고, 그러한 경우 적절하게 이동 방향을 변경하도록 변화량을 재설정 해주어야 한다.
+BoundedWorld는 ball이 허용 공간을 벗어났는지 확인하고, 그러한 경우 적절하게 이동 방향을 변경하도록 변화량을 재설정해 주어야 한다.
 
 
 
 ##### 필드
 
-* BoundedWorld은 자신의 공간 정보가 경계 정보가 되므로, 별도의 추가는 필요 없다.
+* BoundedWorld는 자신의 공간 정보가 경계 정보가 되므로, 별도의 추가는 필요 없다.
 
 
 
@@ -1569,7 +1577,7 @@ BoundedWorld는 ball이 허용 공간을 벗어났는지 확인하고, 그러한
 
 ---
 
-#### 문제 4-2-1. BoundedWorld 클래스를 구현하라.
+#### 문제 12. BoundedWorld 클래스를 구현하라.
 
 **getBounds**
 
@@ -1580,15 +1588,15 @@ BoundedWorld는 ball이 허용 공간을 벗어났는지 확인하고, 그러한
 
 **outOfBounds**
 
-* ball이 world를 벗어 났는지 확인한다.
+* ball이 world를 벗어났는지 확인한다.
 
-* BoundedWorld의 영역과 ball의 영역의 중첩 영역을 구해 ball 영역과 다를 경우 벗어난 것으로 판단한다.
+* BoundedWorld 영역과 ball 영역의 중첩 영역을 구해 ball 영역과 다를 경우 벗어난 것으로 판단한다.
 
 
 
 **bounceBall**
 
-* ball이 경계영역 벽에 부딪혔을 때 튕겨 나온 위치로 이동 시킨다.
+* ball이 경계영역 벽에 부딪혔을 때 튕겨 나온 위치로 이동시킨다.
 * MovableBall만 해당한다.
 * BoundedBall의  bounce를 참고한다.
 
@@ -1613,7 +1621,7 @@ BoundedWorld는 ball이 허용 공간을 벗어났는지 확인하고, 그러한
 
 
 
-### 4-3. 물체간 충돌
+### 4-3. 물체 간 충돌
 
 **Keyword**
 
@@ -1624,18 +1632,18 @@ BoundedWorld는 ball이 허용 공간을 벗어났는지 확인하고, 그러한
 
 BoundedBall은 경계영역을 설정하고 해당 영역을 벗어날 경우, 튕겨져 나온다.
 
-그럼, ball이 하나 이상 존재할 때 다른 ball이 차지하고 있는 공간은 어떻게 해야할까?
+그럼, ball이 하나 이상 존재할 때 다른 ball이 차지하고 있는 공간은 어떻게 해야 할까?
 
-또한, 경계영역은 ball에게 허용되는 반면 다른 ball이 차지한 공간의 경우 허용되지 않는 영역이다. 따라서, 공간에 대해 허용 영역이 안인지 밖이지 구별이 필요하다.
+또한, 경계영역은 ball에 허용되는 반면 다른 ball이 차지한 공간의 경우 허용되지 않는 영역이다. 따라서, 공간에 대해 허용 영역이 안인지 밖이지 구별이 필요하다.
 
 <p align="center">
-  <img src="./image/chapter_4_3_1.png" alt="물체간 충돌">
+  <img src="./image/figure21.png" alt="물체 간 충돌">
 </p>
 
 * 흰색 ball을 기준으로 한다.
 * 파란색은 앞에서 정의하고 있는 world가 된다.
 * 붉은색 ball은 중첩이 허용되지 않는 다른 물체가 된다.
-* 붉은 색으로 표시된 영역은 흰색ball에게 허용되지 않는 영역이다.
+* 붉은색으로 표시된 영역은 흰색 ball에 허용되지 않는 영역이다.
 * world를 기존으로 할 경우 내부 영역이 허용 영역이고, 다른 ball을 기준으로 할 경우, 외부 영역이 허용 영역이 된다.
 
 
@@ -1649,27 +1657,27 @@ BoundedBall은 경계영역을 설정하고 해당 영역을 벗어날 경우, �
 * ball이 겹침은 ball 중간 거리가 두 ball의 반지름 합보다 크면 된다.
 
 <p align="center">
-  <img src="./image/chapter_4_3_1_1.png" alt="볼간 거리">
+  <img src="./image/figure22.png" alt="ball 간 거리">
 </p>
 
-* ball간 거리는
+* ball 간 거리는
   $$
   \begin{align*}
-  중심간거리(D) &= r1+r2+d=\sqrt{{(x1-x2)}^2 + {(y1-y2)}^2}\\
-  볼간거리(d) &= \sqrt{{(x1-x2)}^2 + {(y1-y2)}^2} - (r1 + r2)
+  중심 간 거리(D) &= r1+r2+d=\sqrt{{(x1-x2)}^2 + {(y1-y2)}^2}\\
+  ball 간 거리(d) &= \sqrt{{(x1-x2)}^2 + {(y1-y2)}^2} - (r1 + r2)
   \end{align*}
   $$
 
 
-ball간 거리가 두 ball의 반지름 합보다 작을 경우, 두 ball은 충돌한 상태다.
+ball 간 거리가 두 ball의 반지름 합보다 작을 경우, 두 ball은 충돌한 상태다.
 
 
 
 ---
 
-#### 문제 4-3-1. 가려지는 ball이 없도록 생성하라
+#### 문제 14. 가려지는 ball이 없도록 생성하라
 
-랜덤하게 생성한 결과 일부 ball이 겹쳐짐을 ball 수 있다. 이는 앞서 추가된 ball이 어디에 얼만한 크기로 존재하는지 확인하지 않고 추가해 발생한 문제이다.  world에 ball이 추가될 때 해당 영역을 다른 ball이 없는지 확인하고 추가하도록 수정한다. 만약, 다른 ball이 차지하고 있어 새로운 ball의 추가가 어렵다면 exception을 발생시켜서 다른 위치에 추가될 수 있도록 한다.
+임의의 위치에 생성한 결과 일부 ball이 겹침을 ball 수 있다. 이는 앞서 추가된 ball이 어디에 얼만한 크기로 존재하는지 확인하지 않고 추가해 발생한 문제이다.  world에 ball이 추가될 때 해당 영역을 다른 ball이 없는지 확인하고 추가하도록 수정한다. 만약, 다른 ball이 차지하고 있어 새로운 ball의 추가가 어렵다면 exception을 발생시켜서 다른 위치에 추가될 수 있도록 한다.
 
 
 
@@ -1677,7 +1685,7 @@ ball간 거리가 두 ball의 반지름 합보다 작을 경우, 두 ball은 충
 
 * 제곱근 함수는 Math.sqrt()를 이용한다.
 
-* 반복해서 ball을 생성할 때, 반드시 for문을 사용해야 되는 것은 아니다.
+* 반복해서 ball을 생성할 때, 반드시 for문을 사용해야 하는 것은 아니다.
 
 
 
@@ -1685,17 +1693,17 @@ ball간 거리가 두 ball의 반지름 합보다 작을 경우, 두 ball은 충
 **실행 결과**
 
 <p align="center">
-  <img src="./image/exam_4_3_1_1.png" alt="exam_4_3_1_1">
+  <img src="./image/figure23.png" alt="exam_4_3_1_1">
 </p>
 
 ---
 
 
 
-다음 그림은 ball과 box간 충돌을 나타낸 것이다.
+다음 그림은 ball과 box 간 충돌을 나타낸 것이다.
 
 <p align="center">
-  <img src="./image/chapter_4_3_1_2.png" alt="볼과 박스간 거리">
+  <img src="./image/figure24.png" alt="볼과 박스 간 거리">
 </p>
 
 $$
@@ -1706,47 +1714,47 @@ $$
 $$
 
 
-ball과 box의 충돌 역시 복잡해 보이지는 않다. 두 중심간 거리가 최소 충돌 거리도 짧으면 충돌이다.
+ball과 box의 충돌 역시 복잡해 보이지는 않는다. 두 중심 간 거리가 최소 충돌 거리도 짧으면 충돌이다.
 
 하지만, 다음 그림을 보자.
 
 <p align="center">
-  <img src="./image/chapter_4_3_1_3.png" alt="볼과 박스간 거리">
+  <img src="./image/figure25.png" alt="볼과 박스 간 거리">
 </p>
 
 복잡한 식을 이용하면 구할 수도 있을 것이다.
 
-**하지만, 본 과정에서는 중요한 문제가 되지 못한다.**  물체가 충돌한 조건을 정의하고, 충돌시 그에 대한 행동만 정의할 수 있으면 된다.
+**하지만, 본 과정에서는 중요한 문제가 되지 못한다.**  물체가 충돌한 조건을 정의하고, 충돌 시 그에 대한 행동만 정의할 수 있으면 된다.
 
 
 
-다음 그림은 두 ball의 충돌을 intersects함수로 이용할 경우를 표현한 것이다.
+다음 그림은 두 ball의 충돌을 intersects 함수로 이용할 경우를 표현한 것이다.
 
 <p align="center">
-  <img src="./image/intersects.png" alt="intersects">
+  <img src="./image/figure26.png" alt="intersects">
 </p>
 
-실제 충돌하지는 않았지만, 충돌한 것으로 가정한다. 대신 box에도 적용 가능하여 문제를 단순화 시킬 수 있다.
+실제 충돌하지는 않았지만, 충돌한 것으로 가정한다. 대신 box에도 적용가능하여 문제를 단순화시킬 수 있다.
 
 
 
 ---
 
-#### 문제 4-3-2. intersects 함수를 이용해 가려지는 ball이 없도록 생성하라.
+#### 문제 15. intersects 함수를 이용해 가려지는 ball이 없도록 생성하라.
 
 * Ball 클래스에 있는 충돌 확인 함수를 수정한다..
-* Exam_4_3_1.java을 이용해서 확인하라.
+* Exam_4_3_1.java를 이용해서 확인하라.
   * 무슨 문제가 생기는가?
   * 이유는?
 
-* 생성되는 ball을 크기를 조절 해본다.
+* 생성되는 ball을 크기를 조절해본다.
 
 
 
 **실행 결과**
 
 <p align="center">
-  <img src="./image/exam_4_3_2_1.png" alt="exam_4_3_2_1">
+  <img src="./image/figure27.png" alt="exam_4_3_2_1">
 </p>
 
 * ball 크기를 조절할 경우 배치가 가능하지만, 앞서보다 충돌이 많이 발생한다.
@@ -1757,19 +1765,19 @@ ball과 box의 충돌 역시 복잡해 보이지는 않다. 두 중심간 거리
 
 ---
 
-#### 문제 4-3-3. 충돌 부분을 표시하라.(추가)
+#### 문제 16. 충돌 부분을 표시하라.(추가)
 
-* ball가 충돌이 발생한 경우, 충돌 부분을 붉은색을 표시한다.
+* ball에 충돌이 발생한 경우, 충돌 부분을 붉은색으로 표시한다.
 * 충돌 영역을 얻어 낼 수 있어야 한다.
-* 충돌을 감지할때와 그릴때가 달라 따로 저장해야한다.
-* 저장된 충돌 영역은 매번 갱신 되어야 한다.
+* 충돌을 감지할 때와 그릴 때가 달라 따로 저장해야 한다.
+* 저장된 충돌 영역은 매번 갱신되어야 한다.
 
 
 
-결과는 아래과 같다.
+결과는 다음과 같다.
 
 <p align="center">
-  <img src="./image/exam_4_3_3_1.png" alt="충돌">
+  <img src="./image/figure28.png" alt="충돌">
 </p>
 
 ---
@@ -1778,31 +1786,31 @@ ball과 box의 충돌 역시 복잡해 보이지는 않다. 두 중심간 거리
 
 #### 4-3-2. 충돌 후 튕기기
 
-움직이는 두 ball이 충돌하면 서로 튕겨나간다. 여기서는 동시에 튕기는 것을 구현하기는 복잡하므로, 문제를 단순화하여 특정 순간에 하나의 ball만 움직여서 고정된 ball에 부딫히는 것으로 한다.
+움직이는 두 ball이 충돌하면 서로 튕겨 나간다. 여기서는 동시에 튕기는 것을 구현하기는 복잡하므로, 문제를 단순화하여 특정 순간에 하나의 ball만 움직여서 고정된 ball에 부딪히는 것으로 한다.
 
-이럴 경우, 움직이던 ball은 어디를 부딪히는냐에 따라 특정한 방향으로 꺽여서 튕겨 나가게 된다.
+이럴 경우, 움직이던 ball은 어디를 부딪히느냐에 따라 특정한 방향으로 꺾여서 튕겨 나가게 된다.
 
-다음 그림은 두 ball이 충돌하였을때, 겹치는 부분을 표시한 것이다.
+다음 그림은 두 ball이 충돌하였을 때, 겹치는 부분을 표시한 것이다.
 
 <p align="center">
-  <img src="./image/chapter_4_3_2_1.png" alt="중첩 영역">
+  <img src="./image/figure29.png" alt="중첩 영역">
 </p>
 
-겹침영역 번호로 하여, 1, 3, 6, 8은 진행 방향의 반대로, 2, 7은 x측을 기준으로 반대로(즉, dy를 변경), 4, 5는 y측을 기준으로 반대로 움직이도록 하면 정확하지는 않지만, 충돌 후 튕김을 구현할 수 있다.
+겹침 영역을 번호로 하여, 1, 3, 6, 8은 진행 방향의 반대로, 2, 7은 X 측을 기준으로 반대로(즉, dy를 변경), 4, 5는 Y 측을 기준으로 반대로 움직이도록 하면 정확하지는 않지만, 충돌 후 튕김을 구현할 수 있다.
 
 
 
-큰 ball이 움직을 경우도 마찬가지가 된다.
+큰 ball이 움직일 경우도 마찬가지가 된다.
 
 
 
 ---
 
-#### 문제 4-3-4. 하나의 ball을 고정시켜 둔 상태에서 다른 하나의 ball을 움직이도록 하여 충돌시 튕김을 구현하라.
+#### 문제 17. 하나의 ball을 고정해 둔 상태에서 다른 하나의 ball을 움직이도록 하여 충돌 시 튕김을 구현하라.
 
 **참고**
 
-* 교차 영역을 구하고 영역의 폭과 높이로 3가지 그룹중 하나로 구분 가능하다
+* 교차 영역을 구하고 영역의 폭과 높이로 3가지 그룹 중 하나로 구분가능하다
 
 ---
 
@@ -1925,7 +1933,7 @@ public class Ball {
 
 ---
 
-#### 문제 5-1-1. x,y 좌표, radius 대신 region을 이용하도록 수정하라.
+#### 문제 18. x,y 좌표, radius 대신 region을 이용하도록 수정하라.
 
 ~~~java
 package org.nhnacademy.cannongame;
@@ -1943,7 +1951,7 @@ public class Ball {
 ~~~
 
 * 코드를 많이 수정하였나?
-* 앞에 만들어둔 테스트 코드에는 문제가 없나? 모두 정상?
+* 앞에 만들어 둔 테스트 코드에는 문제가 없나? 모두 정상?
 
 **참고**
 
@@ -1955,7 +1963,7 @@ public class Ball {
 
 ### 5-2. Motion 클래스
 
-#### 정의
+#### 5-2-1. 정의
 
 앞에서 2차원 공간에서의 물체 이동은 $(dx, dy)$, 즉, x축의 변화량과 y축의 변화량을 사용하였다. 하지만, 이것은 물체의 이동을 나타내는데 한계가 있다.
 
@@ -1964,7 +1972,7 @@ $$
 dx = v sin \theta\\
 dy = v cos \theta
 $$
-계산은 가능하다. 하지만, 이것을 매번하거나 여러 변위량이 중첩하게 된다면 매우 복잡한 계산을 반복적으로 해야하는 번거로움이 생길 것이다.
+계산은 가능하다. 하지만, 이것을 매번 하거나 여러 변위량이 중첩하게 된다면 매우 복잡한 계산을 반복적으로 해야 하는 번거로움이 생길 것이다.
 
 이러한 문제 해결을 위해 2차원 공간에서의 물체 이동과 관련된 클래스를 만들도록 한다.
 
@@ -1973,7 +1981,7 @@ $$
 Motion  클래스는 물리학이나 수학에서 말하는 Vector를 표현한 것이다.
 
 <p align="center">
-  <img src="./image/motion.png" alt="Motion">
+  <img src="./image/figure30.png" alt="Motion">
 </p>
 
 ##### 필드
@@ -1987,7 +1995,7 @@ Motion은 좌표계를 기준으로 함으로 dx, dy를 기본으로 갖는다.
 
 ##### 함수
 
-Motion은 수학과 물리학에서 이야기하는 벡터로서 각각의 성분을 개별적으로 반환하거나, motion간 연산이 가능하다.
+Motion은 수학과 물리학에서 이야기하는 벡터로서 각각의 성분을 개별적으로 반환하거나, motion 간 연산이 가능하다.
 
 * x축과 y축 변화량으로 생성할 수 있다(PositionVector).
 * 각도(angle)와 크기(magnitude)로 생성할 수 있다(DisplacementVector).
@@ -1998,9 +2006,9 @@ Motion은 수학과 물리학에서 이야기하는 벡터로서 각각의 성�
 
 ---
 
-#### 문제 5-2-1. Motion 클래스를 구현하라.
+#### 문제 19. Motion 클래스를 구현하라.
 
-* x축과 y축의 변화량를 줄 경우와 각도와 크기를 줄 경우를 구분하기 어렵다(정수와 실수로 구분할 수는 있지만...)
+* x축과 y축의 변화량을 줄 경우와 각도와 크기를 줄 경우를 구분하기 어렵다(정수와 실수로 구분할 수는 있지만….)
 * Motion을  정의하고, 생성자는 클래스 함수로 정의한다.
   * x축과 y축의 변화량은 createPosition
   * 각도와 크기는 createDisplacement
@@ -2120,7 +2128,7 @@ public class Exam_5_2_1 {
 
 #### 5-3-1. Ball의 이동
 
-앞서에서의 MovableBall은 단위 이동량을 dx, dy로 설정하였다.
+앞서의 MovableBall은 단위 이동량을 dx, dy로 설정하였다.
 
 이를 Motion 클래스로 변경하여 적용해 보자..
 
@@ -2128,7 +2136,7 @@ public class Exam_5_2_1 {
 
 ---
 
-#### 문제 5-3-1. 단위 이동량을 Motion 클래스로 수정하라.
+#### 문제 20. 단위 이동량을 Motion 클래스로 수정하라.
 
 * 기존에 사용하던 move(int dx, int dy)는 호환성을 위해 두도록 한다.
 * Ball 테스트 코드에 Motion 추가와 관련된 테스트 코드를 추가한다.
@@ -2173,17 +2181,17 @@ public class MovableBall extends Ball {
 
 ### 6-1. Box 클래스
 
-#### 정의
+#### 6-1-1. 정의
 
 2차원 공간에서의 Box는 우리가 흔히 알고 있는 사각형이다.
 
 <p align="center">
-  <img src="./image/box.png" alt="box">
+  <img src="./image/figure31.png" alt="box">
 </p>
 
 * 생성 후 이동이나 정보 변경 불가
 
-#### 필드
+##### 필드
 
 box는 중심 좌표와 폭과 높이를 갖는다.
 
@@ -2194,9 +2202,9 @@ box는 중심 좌표와 폭과 높이를 갖는다.
 
 
 
-#### 함수
+##### 함수
 
-box에는 값를 얻기 위한 함수와  화면상에 표시하기 위한 함수가 제공되어야 하며, 위에서 정의한 필드의 값를 얻을 수 있도록 다음의 함수가 요구된다.
+box에는 값을 얻기 위한 함수와  화면상에 표시하기 위한 함수가 제공되어야 하며, 위에서 정의한 필드의 값을 얻을 수 있도록 다음의 함수가 요구된다.
 
 * 중심점 좌표 얻기(getX, getY)
 
@@ -2216,7 +2224,7 @@ box에는 값를 얻기 위한 함수와  화면상에 표시하기 위한 함�
 
 화면에 그리기는 awt library를 사용하므로, 라이브러리에서 요구하는 형식에 맞춰 구성되어야 한다.
 
-awt에서는 Graphics context 제공하여 화면 출력이 가능하도록 지원하므로, 그리기 함수에서는 제공되는 context를 이용해 그려야 한다.
+AWT에서는 Graphics context 제공하여 화면 출력이 가능하도록 지원하므로, 그리기 함수에서는 제공되는 context를 이용해 그려야 한다.
 
 ~~~java
 void paint(Graphics g) {...}
@@ -2224,33 +2232,33 @@ void paint(Graphics g) {...}
 
 
 
-**참고. awt에서 사각형 그리기**
+**참고. AWT에서 사각형 그리기**
 
-Box 클래스에서 도형을 그리는 paint 메소드를 보면, 사각형을 그리기 위해  fillRect를 사용한다.
+Box 클래스에서 도형을 그리는 paint 함수를 보면, 사각형을 그리기 위해  fillRect를 사용한다.
 
 <p align="center">
-  <img src="./image/fillRect.png" alt="fillRect">
+  <img src="./image/figure32.png" alt="fillRect">
 </p>
 
 * (x, y)는 box의 중심 좌표를 나타낸다.
-* fillRect는 우측 상단 꼭지점과 폭, 높이 정보를 필요로 한다.
+* fillRect는 우측 상단 꼭짓점과 폭, 높이 정보가 필요하다.
 
 
 
 ---
 
-#### 문제 6-1-1. Box 클래스를 구현하라.
+#### 문제 21. Box 클래스를 구현하라.
 
-* x,y로 이루어진 중심점 좌표, 폭, 높이, 색을 갖는다.
-* 중심점 좌표, 폭, 높이는 생성시 설정한다.
+* x, y로 이루어진 중심점 좌표, 폭, 높이, 색을 갖는다.
+* 중심점 좌표, 폭, 높이는 생성 시 설정한다.
 * 복제 생성자를 구성한다.
-* 색은 생성시 설정할 수 있고, 기본색은 파란색으로 지정한다.
-* 각 필드 값를 요청할 수 있다.
+* 색은 생성 시 설정할 수 있고, 기본색은 파란색으로 지정한다.
+* 각 필드 값을 요청할 수 있다.
 * 코드 중복은 최소화하라.
 * 코딩 규칙을 따라 작성한다.
 * awt Graphics context를 매개변수로 받아 그릴 수 있도록 함수를 추가한다.
-* 도형의 색은 graphics context에서 설정 가능하다. (setColor)
-* 일반적으로 외부의 자원을 활용할 경우, 자원 활용 후 활용 전 설정을 최대한 복원해 두는 것이 좋다. 따라서, graphics context의 색 설정을 변경하기 전에 기존 색을 저장 하였다 복원에 사용한다.
+* 도형의 색은 graphics context에서 설정가능하다. (setColor)
+* 일반적으로 외부의 자원을 활용할 경우, 자원 활용 후 활용 전 설정을 최대한 복원해 두는 것이 좋다. 따라서, graphics context의 색 설정을 변경하기 전에 기존 색을 저장하였다 복원에 사용한다.
 
 
 
@@ -2356,24 +2364,24 @@ public class Exam_6_1_1 {
 
 ---
 
-#### 문제 6-1-2. World에서 Box 클래스를 지원할 수 있도록 추가하라.
+#### 문제 22. World에서 Box 클래스를 지원할 수 있도록 추가하라.
 
-World에는 Ball만 추가되도록 구성되어 있다. World에 Box를 추가할 수 있도록 수정해보자.
+World에는 Ball만 추가되도록 구성되어 있다. World에 Box를 추가할 수 있도록 수정해 보자.
 
-두가지 방법이 있을 것 같다.
+두 가지 방법이 있을 것 같다.
 
-첫번째, Box 클래스를 위한 함수들을 추가해 보자.
+첫 번째, Box 클래스를 위한 함수들을 추가해 보자.
 
 
 
 **실행 결과**
 
 <p align="center">
-  <img src="./image/exam_6_1_2_1.png" alt="exam_6_1_2_1">
+  <img src="./image/figure33.png" alt="exam_6_1_2_1">
 </p>
 
 * Box 추가에 문제는 없나?
-* Data type만 다를 뿐 동일한 작업은 문제 없나?
+* Data type만 다를 뿐 동일한 작업은 문제없나?
 * 새로운 종류가 추가된다면?
 
 
@@ -2390,20 +2398,20 @@ box를 관리하기 위한 필드를 추가할 뿐만 아니라 관련된 함수
 
 
 
-두번째 방법으로 Ball 클래스와  Box 클래스의 상위 클래스인 Object 클래스를 이용하는 방법이 있을 수 있다.
+두 번째 방법으로 Ball 클래스와  Box 클래스의 상위 클래스인 Object 클래스를 이용하는 방법이 있을 수 있다.
 
 
 
 ---
 
-#### 문제 6-1-3. World클래스의 객체들을 Obect 클래스로 단일화 시켜 관리도록 바꿔 보자.
+#### 문제 23. World 클래스의 오브젝트들을 Obect 클래스로 단일화시켜 관리토록 바꿔 보자.
 
 
 
 **실행 결과**
 
 <p align="center">
-  <img src="./image/exam_6_1_3_1.png" alt="exam_6_1_3_1">
+  <img src="./image/figure34.png" alt="exam_6_1_3_1">
 </p>
 
 * 새로운 종류 추가에 문제가 없는가?
@@ -2413,13 +2421,13 @@ box를 관리하기 위한 필드를 추가할 뿐만 아니라 관련된 함수
 
 
 
-두가지 방식 모두 좋아 보이지 않는다. 그렇다고 하더라고 나머지 추가 작업이 없다면 사용할 수 있을 것이다.
+두 가지 방식 모두 좋아 보이지 않는다. 그렇다고 하더라고 나머지 추가 작업이 없다면 사용할 수 있을 것이다.
 
 하지만, World 클래스를 확장해서 정의한 MovableWorld, BoundedWorld는 어떻게 해야 하나?
 
 World 클래스에서 했던 작업을 동일하게 반복해야 한다.
 
-문제가 간단하지만은 않은 듯 하다.
+문제가 간단하지만은 않은 듯하다.
 
 
 
@@ -2433,11 +2441,11 @@ World 클래스에서 했던 작업을 동일하게 반복해야 한다.
 
 
 
-문제를 단순화 시키기 위해 Box 클래스가 추가된 World 클래스를 다시 보도록 하자.
+문제를 단순화하기 위해 Box 클래스가 추가된 World 클래스를 다시 보자.
 
-World 클래스 내에서 ball과 box를 구분해야할 곳은 어디인가?
+World 클래스 내에서 ball과 box를 구분해야 할 곳은 어디인가?
 
-이것만 일반화 시킬 수 있다면 문제가 쉽게 해결되지 않을까?
+이것만 일반화할 수 있다면 문제가 쉽게 해결되지 않을까?
 
 
 
@@ -2445,13 +2453,13 @@ World 클래스 내에서 ball과 box를 구분해야할 곳은 어디인가?
 
 ### 7-0. Regionable 인터페이스
 
-World 클래스는 출력되는 객체들은 모두 일정한 영역을 갖는다. 앞서 정의한 ball이나 box에서도 getRegion함수를 이용해 영역 확인이 가능하다.
+World 클래스는 출력되는 오브젝트들은 모두 일정한 영역을 갖는다. 앞서 정의한 ball이나 box에서도 getRegion 함수를 이용해 영역 확인이 가능하다.
 
 이러한 공통적인 기능들이 제공되는 type을 정의한다.
 
 
 
-#### 정의
+#### 7-0-1. 정의
 
 * 영역을 가지는 type
 
@@ -2467,7 +2475,7 @@ World 클래스는 출력되는 객체들은 모두 일정한 영역을 갖는�
 
 ---
 
-#### 문제 7-0-1. Regionable 인터페이스를 선언하고, World 클래스에는 Regionable 객체를 받아서 관리할 수 있도록 수정하라.
+#### 문제 24. Regionable 인터페이스를 선언하고, World 클래스에는 Regionable 오브젝트를 받아서 관리할 수 있도록 수정하라.
 
 * 어떠한 문제점이 있는가?
 * 해결 방법은? Regionable에 그리기 함수 추가?
@@ -2478,9 +2486,9 @@ World 클래스는 출력되는 객체들은 모두 일정한 영역을 갖는�
 
 ### 7-1. Paintable 인터페이스
 
-World 클래스는 도형을 받아서 화면에 출력하는 작업을 한다. 따라서, 실제로 필요한 것은 paint 함수를 가진 객체면 어떠한 종류든 상관이 없다.
+World 클래스는 도형을 받아서 화면에 출력하는 작업을 한다. 따라서, 실제로 필요한 것은 paint 함수를 가진 오브젝트면 어떠한 종류든 상관이 없다.
 
-#### 정의
+#### 7-1-1. 정의
 
 * 그리기 지원
 
@@ -2494,7 +2502,7 @@ World 클래스는 도형을 받아서 화면에 출력하는 작업을 한다. 
 
 ---
 
-#### 문제 7-1-1. Paintable 인터페이스를 선언하고, World 클래스에는 Paintable 객체를 받아서 관리할 수 있도록 수정하라.
+#### 문제 25. Paintable 인터페이스를 선언하고, World 클래스에는 Paintable 오브젝트를 받아서 관리할 수 있도록 수정하라.
 
 * 문제 7-0-1에서 발생한 문제는 해결되었나?
 
@@ -2506,10 +2514,10 @@ World 클래스는 도형을 받아서 화면에 출력하는 작업을 한다. 
 
 ---
 
-#### 문제 7-1-2. Ball 클래스와 Box 클래스를 World 클래스에 적용할 수 있도록 수정하라.
+#### 문제 26. Ball 클래스와 Box 클래스를 World 클래스에 적용할 수 있도록 수정하라.
 
-* 클래스가 수정되었다면 앞서 만들어둔 SingleBallWorldTest를 이용해 동작을 확인해 보자.
-* MultiBallWorldTest에서는 에러가 발생할 수 있다. 이는 확인을 위해 getBall 함수를 이용해 Ball을 가져오기 때문이다. 수정해보도록 한다.
+* 클래스가 수정되었다면 앞서 만들어 둔 SingleBallWorldTest를 이용해 동작을 확인해 보자.
+* MultiBallWorldTest에서는 에러가 발생할 수 있다. 이는 확인을 위해 getBall 함수를 이용해 Ball을 가져오기 때문이다. 수정해 보도록 한다.
 
 
 
@@ -2605,7 +2613,7 @@ public class Exam_7_1_2 {
 **실행 결과**
 
 <p align="center">
-  <img src="./image/exam_7_1_2_1.png" alt="exam_7_1_2_1">
+  <img src="./image/figure35.png" alt="exam_7_1_2_1">
 </p>
 
 ---
@@ -2614,9 +2622,11 @@ public class Exam_7_1_2 {
 
 ### 7-2. Movable 인터페이스
 
+#### 7-2-1. 정의
+
 * MovableBall, MovableBox 그리고 MovableWorld? Movable!
 
-* MovableWorld에서 객체를 이동하기 위해 필요한 것은 해당 객체에서 이동에 필요한 함수 지원 여부
+* MovableWorld에서 오브젝트를 이동하기 위해 필요한 것은 해당 오브젝트에서 이동에 필요한 함수 지원 여부
 
 
 
@@ -2631,9 +2641,9 @@ public class Exam_7_1_2 {
 
 ---
 
-#### 문제 7-2-1. MovableBall과 MovableWorld도 Movable 인터페이스를 선언해 해결하는 것과 같은 방법으로 해결하라.
+#### 문제 27. MovableBall과 MovableWorld도 Movable 인터페이스를 선언해 해결하는 것과 같은 방법으로 해결하라.
 
-* 기존 코드에서 많은 부분을 바꿔야야 하나?
+* 기존 코드에서 많은 부분을 바꿔야 하나?
 
 ---
 
@@ -2641,13 +2651,14 @@ public class Exam_7_1_2 {
 
 ### 7-3. Bounded 인터페이스
 
-#### 정의
+#### 7-3-1
+정의
 
 * BoundedBall, BoundedBox 그리고 BoundedWorld?? Bounded!
 
 
 
-##### 함수
+##### 요구 함수
 
 * 경계 정보를 설정하거나 반환한다.(getBounds, setBounds)
 
@@ -2658,7 +2669,7 @@ public class Exam_7_1_2 {
 
 ---
 
-#### 문제 7-3-1. BoundedBall과 BoundedWorld도 Bounded 인터페이스를 선언해 해결하는 것과 같은 방법으로 해결하라.
+#### 문제 28. BoundedBall과 BoundedWorld도 Bounded 인터페이스를 선언해 해결하는 것과 같은 방법으로 해결하라.
 
 ---
 
@@ -2672,31 +2683,32 @@ public class Exam_7_1_2 {
 
 
 
-### 화면상의 좌표
+### 8-1. 화면상의 좌표
 
 컴퓨터 화면의 좌표와 사람들이 일반적으로 생각하는 좌표계와는 다르다.
 
 
 
 <p align="center">
-  <img src="./image/chapter_8_1.png" alt="좌표계">
+  <img src="./image/figure35.png" alt="좌표계">
 </p>
 
 
+#### 8-1-1. 좌표 변환
 
-#### 좌표 변환
 
-* 회전(rotation)
-* 이동(translation)
-* 크기 조정(scaling)
+
+* 회전(rotate)
+* 이동(translate)
+* 크기 조정(scale)
 
 
 
 ---
 
-##### 문제. World 클래스에 회전 함수를  추가해 보자.
+#### 문제 29. World 클래스에 회전 함수를  추가해 보자.
 
-* 회전 방향은 객체 단위로 설정하거나, 함수 호출시 지정할 수 있다. (setRotation, rotate)
+* 회전 방향은 오브젝트 단위로 설정하거나, 함수 호출 시 지정할 수 있다. (setRotation, rotate)
 * X축 또는 Y축을 기준으로 회전한다.(rotate)
   * 회전할 축은 enum으로 선언한다.
 
@@ -2706,20 +2718,20 @@ public class Exam_7_1_2 {
 
 ---
 
-##### 문제. World 클래스에 이동 함수를 추가해 보자.
+#### 문제 30. World 클래스에 이동 함수를 추가해 보자.
 
-* 이동량을 미리 설정하거나, 함수 호출시 지정 가능하다(setTranslation, translate)
+* 이동량을 미리 설정하거나, 함수 호출 시 지정가능하다(setTranslation, translate)
 * X축, Y축 또는 양 축을 기준으로 이동한다.(translate)
 
 ---
 
 
 
----chapter_4_3_2_1
+---
 
-##### 문제. World 클래스에 확대/축소 함수를 추가해 보자.
+#### 문제 31. World 클래스에 확대/축소 함수를 추가해 보자.
 
-* 크기 조정 비율을 미리 설정하거나, 함수 호출시 지정 가능하다.(setScalingRatio, scale)
+* 크기 조정 비율을 미리 설정하거나, 함수 호출 시 지정가능하다.(setScale, scale)
 * 공간 크기를 확대 또는 축소한다(scale)
 
 ---
@@ -2728,16 +2740,16 @@ public class Exam_7_1_2 {
 
 #### 도형 그리기
 
-* 단순히 하나의 점에 대한 좌표 변환은 X축을 기준으로 회전 시킨 후 Y의 시작 위치를 조정하면 된다.
-* 도형의 경우, 기준 점 변경은 문제가 되지 않지만, 그려지는 도형이 위에서 아래로 그려지는지, 아래에서 위로 그려지는지에 따라 도형의 위치가 달라질 수 있다.
+* 단순히 하나의 점에 대한 좌표 변환은 X축을 기준으로 회전시킨 후 Y의 시작 위치를 조정하면 된다.
+* 도형의 경우, 기준점 변경은 문제가 되지 않지만, 그려지는 도형이 위에서 아래로 그려지는지, 아래에서 위로 그려지는지에 따라 도형의 위치가 달라질 수 있다.
 * 화면에 출력하는 라이브러리를 사용할 기준점을 변경하더라도 도형을 그리는 방향이 위에서 아래 방향으로 생각하는 것과 반대가 된다.
-* 도형은 회전 뿐만 아니라 위치 이동도 필요하다.
+* 도형은 회전뿐만 아니라 위치 이동도 필요하다.
 
 
 
 ---
 
-##### 문제. 도형 그릴때 좌표의 변환이 필요하다. Ball, box등에서 도형을 그릴때 좌표가 변환된 도형을 그리도록 수정해보자.
+#### 문제 32. 도형 그릴 때 좌표의 변환이 필요하다. Ball, box 등에서 도형을 그릴 때 좌표가 변환된 도형을 그리도록 수정해 보자.
 
 * 도형은 화면상에서 좌측 위를 기준으로 한다. 좌표를 변환하게 되면, 우측 아래로 변경되어 기준점을 변경해 주어야 한다.
 
@@ -2753,27 +2765,29 @@ public class Exam_7_1_2 {
 
 
 
-물체의 움직임을 변화시키는 것은 외부 영향이다. 앞서 정의한 벽 충둘시 물체의 진행 방향이 변경되는 것 또한 외부 영향이며,  게임 환경에서는 물체의 움직임에 영향을 줄 수 있는 다양한 요소들의 추가가 가능하다.
+물체의 움직임을 변화시키는 것은 외부 영향이다. 앞서 정의한 벽 충둘 시 물체의 진행 방향이 변경되는 것 또한 외부 영향이며,  게임 환경에서는 물체의 움직임에 영향을 줄 수 있는 다양한 요소들의 추가가 가능하다.
 
 
 
-우리가 목표로하는 대포게임은 대포를 쏘아 상대방 목표물을 맞추는 것이다. 실제 환경에 대포에 의해 발사된 포탄은 바람, 중력, 공기 저항 등 다양한 요소들의 영향을 받는다.
+우리가 목표로 하는 대포게임은 대포를 쏘아 상대방 목표물을 맞히는 것이다. 실제 환경에 대포에 의해 발사된 포탄은 바람, 중력, 공기 저항 등 다양한 요소들의 영향을 받는다.
 
 이에 따라 우리가 만드는 게임에서는 중력과 바람의 영향을 넣어 보도록 한다.
 
-이들은 특정 값으로 설정되기 보다는 포탄이 날아가는 단위 시간동안 일정량의 영향을 주는 형태로 표현될 것이다.
+이들은 특정 값으로 설정되기보다는 포탄이 날아가는 단위 시간 동안 일정량의 영향을 주는 형태로 표현될 것이다.
 
-일반적으로 이는 객체의 이동에 영향을 주는 외부 효과라 할 수 있다.
+일반적으로 이는 오브젝트의 이동에 영향을 주는 외부 효과라 할 수 있다.
 
 
 
-### 9-1. 외부 효과 추가하기
+### 9-1. 외부 효과
 
-외부 효과는 world내에서 물체에 영향을 주지만, 변화량과 같이 고정감이 아닌 추가되는 성질을 가지고 있다.
+외부 효과는 world 내에서 물체에 영향을 주지만, 변화량과 같이 고정되지 않고 추가되는 성질을 가지고 있다.
 
-기존의 변화량은 단위 시간당 변화량과 같이 지속적으로 같은 영향을 주기 보다는 물체가 움직일때 마다 추가적인 영향을 줌으로써 물체가 가지고 있는 단위 시간당 변화량의 변화를 준다.
+기존의 변화량은 단위 시간당 변화량과 같이 지속해 같은 영향을 주기보다는 물체가 움직일 때마다 추가적인 영향을 줌으로써 물체가 가지고 있는 단위 시간당 변화량의 변화를 준다.
 
-외부 효과도 물체의 이동과 관계되므로  Motion을 이용해 표현 가능하다.
+외부 효과도 물체의 이동과 관계되므로  Motion을 이용해 표현할 수 있다.
+
+
 
 **참고**
 
@@ -2783,7 +2797,7 @@ public class Exam_7_1_2 {
   $$
 
   * 물체의 속도와 운동 방향으로 물체의 단위 시간당 위치 변화를 나타낸다.
-  * 시간이 지난에 따라 물체의 위치가 변경된다.
+  * 시간이 지남에 따라 물체의 위치가 변경된다.
 
 * 가속도
 
@@ -2791,22 +2805,38 @@ public class Exam_7_1_2 {
   a={dv \over dt}
   $$
 
-  * 속도의 변화로서 물체의 단위 시간당 속도 변화를 나타낸다.
-  * 시간이 지난에 따라 물체의 속도가 변경된다.
+  * 속도의 변화로써 물체의 단위 시간당 속도 변화를 나타낸다.
+  * 시간이 지남에 따라 물체의 속도가 변경된다.
 
 
+
+### 9-2. MovableWorld 클래스
+
+ball이나 box가 움직일 때, 외부 효과를 추가하기 위해서는 Movable 인터페이스에 외부 효과를 주면서 움직일 수 있는 함수를 추가하고, 각각의 클래스에서 함수를 구현한다.
+
+MovableWorld에는 외부 효과를 추가하여 관리할 수 있도록 필드와 함수를 추가한다.
+
+
+#### 9-2-1. 수정
+기능 추가를 위해 다음 함수를 추가한다.
+
+##### 함수
+
+* 외부 효과를 추가한다.(addEffect)
+  * 외부 효과는 0개 이상 적용될 수 있다.
+* 추가된 외부 효과의 수를 반환한다(getEffectCount)
+* 외부 효과를 가져온다(getEffect)
+* 외부 효과를 제거한다(removeEffect)
 
 
 
 ---
 
-#### 문제 9-1-1. MovableWorld에서 하나의 ball을 생성하여, ball이 움직일때 마다 외부 효과를 추가해 보자.
+#### 문제 33. MovableWorld에서 하나의 ball을 생성하여, ball이 움직일 때마다 외부 효과를 추가해 보자.
 
-* ball이나 box가 움직일때, 외부 효과를 추가하기 위해서는 Movable 인터페이스에 외부 효과를 주면서 움직일 수 있는 함수를 추가하고, 각각의 클래스에서 함수를 구현한다.
+MovableWorld에 추가된 함수들을 구현한다.
 
-MovableWorld에는 외부 효과를 추가하여 관리할 수 있도록 필드와 함수를 추가한다.
 
-* 외부 효과는 0개 이상 주어질 수 있다
 
 **테스트 코드**
 
@@ -2874,24 +2904,18 @@ public class Exam_9_1_1 {
 
 
 
-### 9-2. 중력 추가하기
-
-중력을 추가한다것은 물체가 이동함에 있어 수직 방향 아래로 일정한 힘을 가한다는 것이다. 다시 말해, 물체가 움직일때 마다 일정한 힘이 Y축의 음수 방향으로 변화량이 추가된다는 것이다.
-
-
-
 ---
 
-#### 문제 9-2-1. MovableWorld에 외부 영향으로 중력을 추가해 보자
+#### 문제 34. MovableWorld에 외부 영향으로 중력을 추가해 보자
 
 * 중력 가속도($g$)는 $a=-9.8 {m \over s^2}$  로 변화량 계산에 추가하기 위해서는 복잡하다.
 
-* 여기서, 이를 단순화 시켜서 단위시간당 일정한 변화량을 추가하는 것으로 정리한다. 다만, 뱡향에는 주의하자.
+* 여기서, 이를 단순화시켜서 단위시간당 일정한 변화량을 추가하는 것으로 정리한다. 다만, 뱡향에는 주의하자.
 
   * $g$ 는 Y축의 음수 방향으로 가해지는 변화량이다.
 
 <p align="center">
-  <img src="./image/exam_9_2_1_1.png" alt="중력가속도">
+  <img src="./image/figure36.png" alt="중력가속도">
 </p>
 
 
@@ -2899,7 +2923,32 @@ public class Exam_9_1_1 {
 
 
 
-## 9. 스스로 움직이는 물체
+---
+
+#### 문제 35. MovableWorld에 외부 영향으로 바람을 추가해 보자
+
+* 중력은 일정한 방향으로 일정하게 적용된다.
+
+* 바람은 시간에 따라 변할 수 있다.
+
+
+<p align="center">
+  <img src="./image/figure37.png" alt="중력가속도">
+</p>
+
+---
+
+
+
+Movable 오브젝트들은 게임상에서 움직이는 물체들을 나타내고 있다. MovableWorld에서 등록된 오브젝트 중 Movable type의 오브젝트들만 찾아서 반복문을 통해 순차적으로 이동시켰지만, Thread를 적용하면 Movable type 스스로 움직이도록 할 수 있다.
+
+
+
+먼저, Thread에 대해 알아보고 계속 진행하자
+
+
+
+## 10. 스스로 움직이는 물체
 
 **Keyword**
 
@@ -2908,124 +2957,854 @@ public class Exam_9_1_1 {
 
 
 
+Thread를 학습하기 전까지는 프로그램의 대부분이 하나의 thread에서 동작하였다. (정확히 말해서는 그렇지 않지만, 최소한 여러분이 작성한 코드에 대해서는 그러하다)
 
-Movable 객체들은 게임상에서 움직이는 물체들을 나타내고 있다. 앞서에스는 MovableWorld에서 등록되어 있는 객체들 중 Movable type의 객체들만 찾아서 반복문을 통해 순차적으로 이동시켰지만, Thread를 적용하면 Movable type 스스로 움직이도록 할 수 있다.
-
-
-
-먼저, Thread에 대해 알아보고 계속 진행하도록 하자
+이제는 thread에 대해서 학습하고 연습하였으므로 게임에 적용해 보도록 하자.
 
 
 
-###  Movable의 변신
-
-Thread에 대해 이해하였다면, Movable을 Thread 적용이 가능한 Runnable 인터페이스의 확장으로 정의하고, MovableWorld에서는 객체들이 스스로 움직일 수 있도록 변경해 보자.
-
-Movable 객체는 스스로 움직이므로, 객체마다 이동을 위한 단위 시간 설정이 필욯하다.
 
 
+###  10-1. Movable 인터페이스
 
-#### 추가 함수
+Thread에 대해 이해하였다면, Movable을 Thread 적용이 가능한 Runnable 인터페이스의 확장으로 정의한다.
 
-* 단위 시간 (getDT, setDT)
-
-* 움직임 시작(start)
-
-* 움직임 멈춤(stop)
+Movable은 스스로 움직일 수 있는 type으로서, 이에 필요한 함수 추가가 요구된다.
 
 
 
----
+#### 10-1-1. 정의
 
-##### 문제. Movable 인터페이스를 Runnable 인터페이스의 확장으로 정의하고, Movable 인터페이스를 구현하고 있는 클래스들을  수정된 Movable 인터페이스에 맞게 수정하라.
 
----
+
+##### 함수
+
+* 단위 시간을 관리한다 (getDT, setDT)
+
+* 움직임 시작한다(start)
+
+* 움직임 멈춘다(stop)
 
 
 
 ---
 
-##### 문제.  Movable 인터페이스를 구현하고 있는 클래스들의 수정이 끝났다면, MovableWorld도 이에 맞게 수정하라.
+#### 문제 36. Movable 인터페이스를 Runnable 인터페이스의 확장으로 정의하고, MovableBall, MovableBox 등을 thread로 동작하도록 수정하라.
+
+* 구현 클래스는 별도의 Thread 인스턴스의 도움을 받지 않도록 구현한다.
+
+
+
+**주의**
+
+* paint 함수가 어느 thread에서 실행되는지 확인하라.
+* 동일한 자원에 대해 두 개 이상의 thread가 동시 접근 시 문제가 될 수 있다.
+  * Thread 학습에서 배운 내용으로 대처하라
+
+---
+
+
+
+### 10-2. MovableWorld 클래스
+
+MovableWorld에서는 일정한 시간 간격으로 오브젝트를 이동시키는 작업을 수행하였다.
+
+오브젝트를 Runnable type으로 전환하여 개별적으로 동작하게 할 경우, 오브젝트 이동을 위한 작업은 필요 없게 되고 전체적인 동작의 시작과 멈춤만 수행하면 된다.
+
+
+
+또한, MovableWorld에서만의 관리 작업이 필요하다면, MovableWorld도 thread를 이용해 독립적으로 동작하는 오브젝트로 변경하면 된다.
+
+이를 위해 함수를 수정한다.
+
+
+
+#### 10-2-1. 수정
+
+* Thread에 의해 개별 동작할 것은 Runnable 인터페이스를 구현한다.
+
+
+
+##### 필드
+
+* Thread 관리를 위한 thread 추가한다.
+
+
+
+##### 함수
+
+* Thread를 이용해 구동할 것으로 run을 제거하고,
+* Thread 구동을 위한 main 함수 추가한다.
+* Thread 시작과 멈춤을 추가한다(start/stop)
+
+
+
+---
+
+#### 문제 37.  MovableWorld를 thread로 동작할 수 있도록 수정하라.
 
 * 이전과 같이 동작하나?
-
----
-
-
-
-### 충돌 검출 및 튕기기
-
-앞서에서는 BoundedWorld에서 객체를 이동시키고, 충돌 검출 및 그에 따른 튕기기를 구현하였다. Movable 개체에 대해 thread를 적용하여 스스로 움직임을 구현한 후  더이상 BoundedWorld에서 개별 객체에 대한 충돌 검출 및 튕기기 구현이 어려워 졌다. 어떻게 해야할까?
+* 오브젝트는 동작 중에 추가되거나 삭제될 수 있다.
+  * 자원 동시 접근 문제가 발생할 수 있다.
 
 
 
-BoundedWorld의 기본 역활은 유지하지만, 객체를 이동 시키는 주체가 변경되었으므로 이를 조정해 보자.
 
-BoundedWorld에서 이동과 충동 검출을 함께 할 경우, 이동 후 시점에 대해서 스스로 알 수 있지만, 개별 객체가 thread로 동작할때는 해당 시점을 알 수 없다.
+**테스트 코드**
 
-그럼, 해당 시점에 대해서 누가 알려 줘야 하는가?
+~~~java
+~~~
 
 
 
 ---
 
-##### 문제. 객체가 필요한 시점에 BoundedWorld로 부터 충돌 정보를 받을 수 있도록 수정하라.
 
-*  객체에서 BoundedWorld에 등록되는 시점에 해당 공간에 대한 정보를 얻을 수 있도록 해야한다.
-   *  bounds
-   *  다른 객체들의 region (객체들은 수시로 이동할 수도 있다)
+
+### 10-2. 충돌 감지 및 튕기기
+
+앞서서는 BoundedWorld에서 오브젝트를 이동시키고, 충돌 감지 및 그에 따른 튕기기를 구현하였다. Movable 개체에 대해 thread를 적용하여 스스로 움직임을 구현한 후  더 이상 BoundedWorld에서 개별 오브젝트에 대한 충돌 검출 및 튕기기 구현이 어려워졌다. 어떻게 해야 할까?
+
+
+
+BoundedWorld의 기본 역할은 유지하지만, 오브젝트를 이동시키는 주체가 변경되었으므로 이를 조정해 보자.
+
+BoundedWorld에서 이동과 충동 검출을 함께 할 경우, 이동 후 시점에 대해서 스스로 알 수 있지만, 개별 오브젝트가 스스로 움직일 경우 해당 시점을 알 수 없다.
+
+어떻게 해결해야 할까?
+
+
+
+고려할 것은 다음과 같다.
+
+* 움직이는 주체는 오브젝트이다.
+* 경계 영역에 대한 정보는 해당 오브젝트가 가질 수 있다.
+* 오브젝트 간 충돌 확인을 위해서는 World의 오브젝트 목록이 필요하다.
+  * 오브젝트 등록 시 목록을 받고, 신규 등록 시 업데이트되거나
+  * 매번 World에 요청하거나
+
+
+
+
+---
+
+#### 문제 38. 오브젝트가 이동 후 World로부터 정보를 받아 충돌 감지 및 튕김구현이 가능하도록 수정하라.
+
+* World에 오브젝트를 추가할 때, 오브젝트에 world를 참조할 수 있도록 정보를 제공한다.
+
+* 오브젝트는 이동 후 충돌 확인 world로부터 장애물(경계영역, 다른 오브젝트)에 대한 정보를 받아 충돌 확인한다.
+
+* 충돌 검출 시 튕김 처리한다.
+
+
 
 ---
 
 
 
-## 10. 게임 만들기
+
+
+## 11. Java Graphics
 
 **Keyword**
 
 * GUI
-* Layout
+* AWT, Swing
+* Delegation
+
+* Event-Driven Programming
 
 
 
-### 화면 구성하기
-
-#### 제어 버튼
 
 
+### 11-1. Component 클래스
 
-#### 설정 슬라이더
+Java Swing에서는 아래와 같은 component를 지원한다.
+
+~~~mermaid
+classDiagram
+	Object <|-- Component
+  Component <|-- Container
+  Container <|-- Window
+  Window <|-- Frame
+  Window <|-- Dialog
+	Frame <|-- JFrame
+	Dialog <|-- JDialog
+	Container <|-- JComponent
+	JComponent <|-- Button
+	JComponent <|-- JLabel
+	JComponent <|-- JCheckbox
+	JComponent <|-- JList
+	JComponent <|-- JProgressBar
+	JComponent <|-- AbstractButton
+	AbstractButton <|-- JButton
+	AbstractButton <|-- JToggleButton
+	JToggleButton <|-- JCheckBox
+~~~
 
 
 
-#### 데이터 출력
+게임에서 필요한 몇 가지 component에 대해 알아보자.
+
+#### 11-1-1. JLabel 클래스
+
+* 화면 상에 문자열 출력
+* 색, 크기, 폰트 등 지정 가능
 
 
 
-#### 구성 요소 배치하기
+
+#### 11-1-2. JTextField 클래스
+
+* 화면 상에 문자열 입력을 위한 입력창 생성
+* 입력 글자 수, 형식  등 지정 가능
 
 
 
-### 제어 연결
+#### 11-1-3. JBotton 클래스
+
+* 흔히 알고 있는 push 버튼
+* 상태
+
+
+
+#### 11-1-4. JToggleButton 클래스
+
+* 두가지 상태 중 하나의 상태를 가지고 있는 버튼
+
+
+
+
+#### 11-1-5. JSlider 클래스
+
+* 제한된 간격 내에서 손잡이를 밀어 사용자가 값 선택
+* 옵션으로 눈금 표시
+
+
+
+
+
+### 11-2. Container 클래스
+
+컨테이너 클래스는 다양한 컴포넌트를 담아서 하나의 컴포넌트처럼 관리할 수 있도록 지원하는 클래스이다.
+
+* TextField, Label 등과 같은 다른 구성 요소를 포함할 수 있는 awt 구성 요소이다
+* Frame, Dialog, Panel 클래스가 여기에 속한다.
+* 구성 요소를 특정 위치에 배치되는 화면으로써, 구성 요소의 레이아웃을 포함하고 제어한다.
+
+
+
+컨테이너의 4가지 유형은 다음과 같다.
+
+* Window
+  * 테두리와 메뉴 표시줄이 없다
+* Panel
+  * 제목 표시줄, 테두리 또는 메뉴 표시줄을 포함하지 않는다.
+  * Button, TextField 등의 다른 구성 요소들을 배치하기 위한 용도로 사용된다.
+
+* Frame
+  * 제목 표시줄, 테두리 또는 메뉴 표시줄을 포함하지 않는다.
+  * Button, TextField 등의 다른 구성 요소들을 배치하기 위한 용도로 사용된다.
+
+* Dialog
+
+
+
+#### 11-2-1. Layout
+
+AWT에서는 컨테이너 안에서 구성 요소들의 위치를 자동으로 지정해 주는 다양한 layout을 지원한다.
+
+Layout의 종류는 다음과 같다.
+
+* BorderLayout
+* FlowLayout
+* GridLayout
+* GridBagLayout
+* BoxLayout
+* CardLayout
+* GroupLayout
+* SpringLayout
+
+
+
+몇 가지 layout에 대해 알아보자.
+
+
+
+##### 11-2-1-1. BorderLayout
+
+* Frame 기본 layout
+* 구성 요소를 container 상/하/좌/우/중앙에 위치
+
+
+
+#### 문제 39. Frame의 layout을 BorderLayout으로 설정하고 버튼을 추가해 보자.
+
+다음 코드는 버튼을 Frame의 동쪽에 붙이는 코드이다.
+
+~~~java
+package exam;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Exam_11_3_1_1 {
+	/**
+	 * @param args
+	 * @throws InterruptedException
+	 */
+	public static void main(String[] args) {
+		JFrame frame = new JFrame();
+
+		// 제목 설정
+		frame.setTitle("BorderLayout Frame");
+		// 크기 설정
+		frame.setSize(300, 300);
+		// Layout 종류 지정
+		...
+
+    // 버튼 생성 후 추가
+    ...
+
+		frame.setVisible(true);
+	}
+}
+
+~~~
+
+결과는 다음과 같다.
+
+<p>
+	<img src="./image/figure38.png" alt="image-BorderLayout" />
+</p>
+
+
+
+##### 11-2-1-2. GridBagLayout
+
+* Container 내부를 행과 열로 구분
+* 구성 요소를 행과 열을 지정하여 배치
+* 구성 요소  크기 지정 가능
+
+
+
+#### 예제. GridBagLayout을 이용해 다음과 같이 구성하라.
+
+<p>
+  <img src="./image/figure39.png" alt="exam_11_3_1_2_1_1" />
+</p>
+
+
+
+각 버튼의 속성을 보면 아래와 같다.
+
+|          | 가로 위치 | 세로 위치 | 폭 가중치 | 가로 격자수 | 높이 |
+| :------: | :-------: | :-------: | :-------: | :----------: | :--: |
+| Button 1 |     0     |     0     |           |              |      |
+| Button 2 |     1     |     0     |    0.5    |              |      |
+| Button 3 |     2     |     0     |    0.5    |              |      |
+| Button 4 |     3     |     0     |    0.5    |              |      |
+| Button 5 |     1     |     1     |    0.5    |      2       |  40  |
+
+
+
+**예제 코드**
+
+~~~java
+import java.awt.*;
+import javax.swing.*;
+
+public class Exam_11_3_1_2_1 {
+	/**
+	 * @param args
+	 * @throws InterruptedException
+	 */
+	public static void main(String[] args) throws InterruptedException {
+		JFrame frame = new JFrame();
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+		// 제목 설정
+		frame.setTitle("GridBagLayout");
+		//// 크기 설정
+		frame.setSize(400, 130);
+		//
+		frame.setLayout(new GridBagLayout());
+
+		JButton button = new JButton("Button 1");
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		frame.add(button, constraints);
+
+		button = new JButton("Button 2");
+		constraints.weightx = 0.5;
+		constraints.gridx = 1;
+		constraints.gridy = 0;
+		frame.add(button, constraints);
+
+		button = new JButton("Button 3");
+		constraints.weightx = 0.5;
+		constraints.gridx = 2;
+		constraints.gridy = 0;
+		frame.add(button, constraints);
+
+		button = new JButton("Button 4");
+		constraints.weightx = 0.5;
+		constraints.gridx = 3;
+		constraints.gridy = 0;
+		frame.add(button, constraints);
+
+		button = new JButton("Button 5");
+		constraints.weightx = 0.5;
+		constraints.gridx = 1;
+		constraints.gridwidth = 2;
+		constraints.gridy = 1;
+		constraints.ipady = 40;
+		frame.add(button, constraints);
+
+		frame.setVisible(true);
+	}
+}
+~~~
+
+#### 문제 40. 계산기 만들기
+
+* 아래 그림과 같은 계산기를 구성한다.
+* 버튼
+  * 0~9 숫자(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+  * 4칙 연산자(+, -, *, /)
+  * 초기화(AC)
+  * 계산(=)
+
+<p>
+  <img src="./image/figure40.png" alt="계산기" />
+</p>
+
+
+##### 11-2-1-3. AbsoluteLayout
+
+* 절대 좌표를 이용한 구성요소 배치
+  * SetBounds
+  * 자동 배치가 되지 않아 원하는 구성이 나오지 않을 수 있음
+* LayoutManager 없음
+  * setLayout(null)
+
+
+
+
+
+#### 문제. 계산기를 AbsoluteLayout을 이용해 구성해 보자.
+
+
+
+
+
+## 12. Event-Driven Programming
 
 **Keyword**
 
-* Event-driven programming
-* Delegation
+* [Event Listener](https://docs.oracle.com/javase/tutorial/uiswing/events/intro.html)
 
 
 
-### GameWorld 클래스
+### 12-1. Java Event
+
+Java는 델리게이션 이벤트 모델(Delegation Event Model)을 사용하여 이벤트를 처리한다. 이 모델은 이벤트를 생성하고 처리하는 표준 메커니즘으로 정의되고 다음과 같은 요소들로 구성된다.
+
+![event_model](./image/event_model.png)
+
+- Event Object(이벤트 오브젝트)
+  - 이벤트가 발생 시 해당 이벤트를 식별할 수 있는 각종 묶음 정보
+  - 이벤트 발생으로 생성되고, 이벤트 처리에 이용된다.
+  - 이벤트 오브젝트에 대한 클래스를 제공하거나 용도에 맞게 정의되어야 한다.
+- Event Source(이벤트 소스)
+  - 소스는 이벤트가 발생하는 오브젝트
+  - 발생한 이벤트에 대한 정보를 핸들러에 제공할 책임이 있다
+  - Java는 소스 오브젝트에 대한 클래스를 제공한다.
+- Event Listener(이벤트 리스너)
+  - 이벤트에 대한 응답을 생성
+  - 인터페이스 제공
+  - 구현을 통한 실체화로 이벤트 핸들러 생성
+  - 이벤트를 수신할 때까지 기다리다 이벤트가 수신되면, 인터페이스를 이용해 구현된 함수를 통해 이벤트 처리
+  - 인터페이스를 이용해 구현된 오브젝트를 이벤트 핸들러(**Event Handler**)라고도 한다.
 
 
 
-### Stickable Interface
+이러한 접근 방식의 이점은 사용자 인터페이스와 이벤트를 생성하는 것이 완전히 분리된다는 것이고, 사용자 인터페이스는 이벤트 처리를 별도의 코드로 위임할 수 있다.
 
-// 늪과 같이 물체가 튕겨나지 않는 곳을 위해
+이 모델에서는 listener가 이벤트 알림을 수신할 수 있도록 listener를 소스 오브젝트에 등록해야 한다. 이벤트 알림을 수신하려는 listener에게만 이벤트 알림이 전송되기 때문에 이는 이벤트를 처리하는 효율적인 방법이다.
 
 
 
-### Add Collision Event
+**이벤트 오브젝트(Event Object)**
 
-// 목적물이 물체와 충돌했을 경우, 이벤트 발생
+이벤트란 개체의 상태 변화를 말한다.  즉, 이벤트는 이벤트 소스의 상태 변화를 설명합니다.
 
+이벤트는 그래픽 사용자 인터페이스 구성 요소와의 사용자 상호 작용의 결과로 생성된다. 예를 들어 버튼 클릭, 마우스 이동, 키보드로 문자 입력, 목록에서 항목 선택, 페이지 스크롤 등이 이벤트를 발생시키는 활동이다.
+
+Java AWT와 swing에서 구현된 이벤트의 종류들에는 아래와 같은 이벤트들이 지원된다.
+
+
+
+**Java AWT와 swing에서의 이벤트 종류**
+
+| 이벤트          | 발생 상황                                                    |
+| --------------- | ------------------------------------------------------------ |
+| ActionEvent     | 오브젝트의 상태 변화, 즉, 클릭, 메뉴 선택, 입력 완료 등 사용자의 행동과 관련된 이벤트 |
+| ItemEvent       | 오브젝트에 포함된 여러 개의 아이템 중 하나 이상이 선택될 경우 발생하는 이벤트 |
+| KeyEvent        | 키보드상의 키 입력                                          |
+| MouseEvent      | 마우스 커서의 이동이나 버튼의 상태 변화가 발생할 경우        |
+| FocusEvent      | 컴포넌트가 선택되거나 해제된 경우                            |
+| TextEvent       | 텍스트가 변경될 때                                           |
+| WindowEvent     | Window를 상속받는 모든 컴포넌트에 대해 윈도우 활성화, 비활성화 등 |
+| AdjustmentEvent | 스크롤바를 움직일 때                                         |
+| ComponentEvent  | 컴포넌트가 사라지거나 이동, 크기 변경                        |
+| ContainerEvent  | 컨테이너에 컴포넌트의 추가/삭제                              |
+
+
+
+**이벤트 소스(Event Source)**
+
+이벤트 소스랑 이벤트를 발생시키는 오브젝트를 말한다. 즉, 화면을 구성하거나 특정한 기능을 수행하는 오브젝트로서 외부적인 요인이나 특정 조건 등이 만족할 때 해당 이벤트를 생성한다.
+
+Java AWT와 swing에서는 이벤트 소스에 이벤트 listener를 등록하여 이벤트 발생 시 처리할 수 있도록 지원한다.
+
+
+
+**Java AWT와 swing에서의 이벤트 소스와 이벤트**
+
+| 이벤트 소스       | 이벤트          | 발생 상황                                                    |
+| ----------------- | --------------- | ------------------------------------------------------------ |
+| Container         | ContainerEvent  | 컨테이너에 컴포넌트의 추가/삭제                              |
+| Component         | ComponentEvent  | 컴포넌트가 사라지거나 이동, 크기 변경                        |
+|                   | FocusEvent      | 컴포넌트가 포커스를 받거나 잃을 때                           |
+|                   | KeyEvent        | 키를 누르거나 뗄 때                                          |
+|                   | MouseEvent      | 마우스 버튼을 누르거나 뗄 때, 마우스 버튼을 클릭할 때, 컴포넌트 위에 마우스가 올라갈 때 등.. |
+| Window            | WindowEvent     | Window를 상속받는 모든 컴포넌트에 대해 윈도우 활성화, 비활성화 등 |
+| JButton           | ActionEvent     | 마우스로 버튼 클릭                                           |
+| JList             | ActionEvent     | 아이템을 더블클릭하여 리스트 아이템 선택                     |
+| JMenuItem         | ActionEvent     | 특정 메뉴의 선택                                             |
+| JTextField        | ActionEvent     | 텍스트를 입력한 후 엔터키 입력                               |
+| JCheckBox         | ItemEvent       | 체크박스의 선택/해제                                         |
+| JCheckBoxMenuItem | ItemEvent       | 체크박스 메뉴아이템의 선택/해제                              |
+| JList             | ItemEvent       | 리스트 아이템 선택                                           |
+| JScrollBar        | AdjustmentEvent | 스크롤바를 움직일 때                                         |
+
+
+
+**Event Listener**
+
+이벤트가 발생했을 때 그 처리를 담당하는 오브젝트를 가리키며, 해당 오브젝트에서 이벤트를 처리하는 함수를 event handler라고도 한다.
+
+Java에서는 인터페이스를 이용해 event listener의 기본 형태를 정의하고 있으며, 개별 응용에 따라 해당 인터페이스를 클래스로 구현하여 이벤트를 처리할 수 있도록 한다.
+
+
+
+**Event Listener Interface**
+
+event listener interface는 이벤트 소스에서 이벤트가 발생할 경우, 이에 대한 처리를 등록하기 위한 인터페이스로서 각각의 이벤트별로 정의되어 있다. 이벤트 소스에서는 이벤트가 발생하면 등록되어있는 event listener의 정해진 함수를 호출하여 처리하게 되므로, 해당 이벤트 소스로부터 이벤트를 받아 처리하고자 할 경우에는 해당 이벤트의 event listener interface를 이용해 구현 후 등록하면 된다.
+
+Java에서 유효한 event listener interface는 아래와 같은 종류들이 있다.
+
+**Java AWT와 swing 이벤트와 event listener interface**
+
+| Evnet | Event Listener Interface | 설명                                                         |
+| -------------- | :----------------------- | :----------------------------------------------------------- |
+| ActionEvent    | ActionListener           | 버튼 클릭이나 텍스트 필드 변경 등의 작업에 응답한다.          |
+| ItemEvent      | ItemListener             | 개별 항목 변경 사항을 수신한다.(예: checkbox)                |
+| KeyEvent       | KeyListener              | 키보드 입력을 수신한다.                                      |
+| MouseEvent     | MouseListener            | 마우스에서  발생하는 이벤트를 수신한다(예 : 클릭, 더블 클릭, 오른쪽 클릭 등) |
+|                | MouseMotionListener      | 마우스 움직임을 수신한다.                                    |
+| FocusEvent     | FocusListener            | component가 포커스를 받거나 잃을 때 수신한다.                 |
+| WindowEvent    | WindowListener           | window에서 발생하는 이벤트를 수신한다.                       |
+| ContainerEvent | ContainerListener        | 컨테이너에서 발생하는 이벤트를 수신한다.(예 : JFrame, JPanel 등) |
+| ComponentEvent | ComponentListener        | 구성 요소의 변경 사항을 수신한다. (예 : 레이블 이동, 크기 조정 등) |
+| AdustmentEvent | AdjustmentListener       | 조정을 수신한다. (예 : 스크롤 바 작동)                       |
+
+
+
+#### 문제 41. 계산기 만들기
+
+* 간단한 정수 계산기를 만든다
+* AC를 누르면 초기화된다.
+* 피연산자가 입력된 상태에서 연산자를 누르면 계산된다.
+  * 피연산자, 연산자, 피연산자가 입력된 상태일때, 연산자를 누르면 계산 후 피연산자, 연산자 표시된다.
+  * 피연산자 하나만 있을경우, 피연산자, 연산자로 표시된다.
+  * 피연산자 입력 시에는 피연산자만 보인다.
+
+
+<p>
+  <img src="./image/figure40.png" alt="계산기" />
+</p>
+
+
+#### 문제 42. 프레임에서 키보드 사용으로 인해 발생하는 KeyEvent를 처리하라
+
+*  프레임을 생성한다
+*  프레임에서 발생하는 KeyEvent 처리를 위한 KeyListener를 등록한다
+*  KeyListener에서 필요한 이벤트 핸들러는 아래와 같다
+   * keyPressed(KeyEvent e)
+   * keyReleased(KeyEvent e)
+   * keyTyped(KeyEvent e)
+*  Event handler에서는 이벤트 발생 시 화면에 키값을 출력한다
+
+
+
+**실행 결과**
+<p>
+  <img src="./image/figure41.png" />
+</p>
+
+
+#### 문제 43. KeyEvent 사용 시 문제점을 해결하라
+
+* KeyEvent 처리를 위해 KeyListener를 등록하고 키를 누르고 있는 경우, keyPressed와 keyTyped가 반복적으로 호출된다.
+
+* 해당 키를 반복적으로 입력하기 위해 누르고 있는 경우라면 의도에 맞게 처리될 수 있지만, 키를 누르는 순간을 검출하기에는 부족한 면이 있다.
+
+* keyPressed는 키를 누르는 순간 1회만 발생하도록 수정하라.
+
+
+
+#### 문제 44.  반투명 프레임을 만들고, 슬라이드를 이용해 반투명도 제어하기
+
+* setOpacity(float f)를 이용해 프레임의 불투명도 설정 가능. 단, 불투명도 제어를 위한 조건이 만족하여야 한다.
+
+* 불투명도는 0 ~ 100으로 설정할 수 있으며, 100이 가장 불투명한 상태이다.
+
+* 불투명도가 변경되면, 해당 값을 아래에 출력한다.
+
+
+
+**참고**
+
+* setPaintTicks(boolean b) : 눈금 표시
+
+* setPaintLabels(boolean b) : 수치 레이블 표시
+
+* setMajorTickSpacing(int n) : 큰 눈금 간격
+
+* setMinorTickSpacing(int n) : 작은 눈금 간격
+
+* addChangeListener(ChangeListener l) : Event listener 설정
+
+
+
+**실행 결과**
+<p>
+  <img src="./image/figure42.png" alt="Opacity01" style="zoom:50%;" />
+</p>
+
+**샘플 코드**
+
+~~~java
+import javax.swing.*;
+import javax.swing.event.*;
+
+class OpacityFrameEx1 extends JFrame implements ChangeListener {
+	JSlider slider;
+	JLabel label;
+
+	public OpacityFrameEx1() {
+		// 불투명도 설정 슬라이드 (0 ~ 100)
+		this.slider = new JSlider(0, 100, 100);
+		// 값 출력용 레이블
+		this.label = new JLabel();
+
+		// 프레임 크기 설정
+		this.setSize(300, 100);
+
+		// 슬라이드에 트랙, 틱,  표시
+		this.slider.setPaintTrack(true);
+		this.slider.setPaintTicks(true);
+		this.slider.setPaintLabels(true);
+
+		// 슬라이드 눈금을 표시(작은 눈금 5, 큰 눈금 20)
+		this.slider.setMajorTickSpacing(20);
+		this.slider.setMinorTickSpacing(5);
+
+		// 슬라이드값이 변경될 때마다 호
+		this.slider.addChangeListener(this);
+
+		// 패널 구성
+		JPanel panel = new JPanel();
+		panel.add(this.slider);
+		panel.add(this.label);
+
+		this.add(panel);
+
+		// 초기 표시
+		this.stateChanged(null);
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		// 불투명도 출력
+		this.label.setText("Opacity value is =" + this.slider.getValue());
+		// 불투명도 설정
+		this.setOpacity(this.slider.getValue() * 0.01f);
+	}
+
+	// main class
+	public static void main(String[] args)
+	{
+		OpacityFrameEx1 frame = new OpacityFrameEx1();
+
+		// 프레임을 불투명도로 제어하기 위해서는 타이틀바 등의 장식이 없어야 한다.
+		frame.setUndecorated(true);
+
+		// 타이틀바가 없어 이동할 수 없음. 생성 시 특정 위치에 생성
+		frame.setLocation(500, 300);
+
+		// 화면 출력
+        frame.setVisible(true);
+	}
+}
+~~~
+
+
+
+### 12-2. 사용자 정의 이벤트
+
+
+
+## 13. 게임 만들기
+
+**Keyword**
+
+* GUI
+
+
+
+
+
+### 13-1. 게임 구성 요소 만들기
+
+게임 화면에는 다양한 물체들에 존재할 수 있다.
+
+포탄을 발사하는 포, 포탄이 튕겨져 나오는 벽이나 물체, 포탄이 박혀 버리는 늪지대 그리고 포탄으로 맞추면 점수를 얻을 수 있는 대상 물체 등이 있다.
+
+
+
+#### 13-1-1. 포 만들기
+
+* 포탄을 발사하는 물체로서 포탄의 각도, 속도 등을 조정할 수 있다.
+
+* 포신의 끝에서 포탄이 발사된다.
+
+* 포신은 한쪽이 고정되어 있고, 다른 한쪽은 원을 그리며 회전할 수 있다.
+
+* 포탄을 맞으면 게임은 끝난다.
+
+   
+
+
+
+#### 13-1-2. 늪지대 만들기
+
+* 포탄은 물체이 부딪힐 경우 튕기는 반면 늪지대에서는 튕기지 않고, 멈춰 버린다.
+* 포탄이 늪지대에 빠지면 해당 게임은 목표물을 맞추지 못한 것이다.
+* 늪지대가 반드시 바닥에 위치할 필요는 없다.
+
+
+
+#### 13-1-3. 목표물 만들기
+
+* 포탄을 맞으면 게임이 승리로 끝난다.
+
+
+
+
+
+### 13-2. GameWorld 클래스
+
+#### 13-2-1. 정의
+
+* 게임이 실행되는 공간으로 다용한 구성 요소가 포함된다.
+
+* * 대포
+
+  * 장애물
+
+  * 목표물
+
+    
+
+* 게임 운영에 필요한 제어가 추가된다.
+
+  * 포탄 발사
+
+  * 초기화
+
+    
+
+* 게임 내에서 발생하는 사건(?)을 외부로 알리기 위한 방법 제공 
+
+  * 포탄 발사 이벤트
+    * 목표물 맞추기가 끝나기 전까지 다음 포탄 발사와 같이 UI를 제어할 수 있다.
+  * 목표물 맞추기 성공
+    * 점수를 증가 시키고, 다음 장면을 준비한다.
+  * 목표물 맞추기 실패
+    * 실패 횟수를 증가 시키고 ,동일한 환경에서 다시 실행할 수 있도록 준비한다.
+
+
+
+##### 필드
+
+* 구성 요소 목록
+* 발사 횟수
+* 성공 횟수
+* 게임 상태
+
+
+
+##### 함수
+
+* 포탄 발사 (fire)
+* 초기화 (init)
+* 포탄 발사 준비 확인(isReady)
+* 포탄 발사 횟수(getNumberOfFire)
+* 성공 횟수(getNumberOfHit)
+
+
+
+### 13-3. Game 클래스
+
+* 게임을 구성할 Frame
+* 다양한 component를 이용하여 게임 인터페이스 구성
+* 인터페이스와 게임 화면이 연결될 수 있도록 지원한다.
+
+
+
+#### 13-3-1. 화면 구성하기
+
+* 게임 화면을 구성한다.
+
+  
+
+##### 문제. JFrame을 확장하여 Game Frame을 정의하고, 다음에 나열되어 있는 기능 지원을 위한 component를 추가하여 배치한다.
+
+* 게임 화면을 추가한다.
+* 포탄 발사 버튼을 추가한다.
+* 외부 효과인 바람 세기를 위한 슬라이드를 추가한다.
+* 점수판을 추가한다.
+
+
+
+#### 13-3-2. 제어 연결
+
+* 구성된 화면을 component들이 동작할 수 있도록 동작을 추가해 보자.
+
+
+
+## 13. 벽돌 깨기 만들기
+
+고전적인 게임중 벽돌 깨기가 있다. 게임 플레이어가 발사한 볼은 공간에 튕기면서 돌아 다니고, 공간 내에 존재하는 다양한 막대들은 특성에 따라 깨지거나 반사만 시키는 등 다양한 행동을 취한다.
+
+앞서 만든 대포 게임과 다른 게임이지만 기본 동작은 동일하다.
+
+
+
+​	
