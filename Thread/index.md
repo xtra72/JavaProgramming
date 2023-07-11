@@ -665,7 +665,7 @@ public class Example3_1 {
 
 ### 스레드 상태 전이
 
-스레드는 내부 동작에 의해 상태가 변경되거나 외부적 요청에 의해 상태 변경이 가능하다.
+스레드는 내부 동작에 의해 상태가 변경되거나 외부적 요청에 따라 상태 변경이 가능하다.
 
 외부에서 스레드 상태 변경을 위한 함수는 다음과 같다.
 
@@ -683,7 +683,7 @@ public class Example3_1 {
 #### interrupt() 함수
 
 * 스레드가 일시 정지 상태에 있을 때, InterruptException 예외를 발생시키는 역할을 한다.
-* Thread에서 stop(), suspend(), resume() 등의 동작 제어와 관련된 함수는 안정성 문제로 인해 사용하지 말 것을 권고하고 있다. 기존 시스템과 호환성을 위해 남겨 둘뿐 신규 개발에서는 interrupt 등을 통해 스레드에서 종료하도록 구성해야 한다.
+* Thread에서 stop(), suspend(), resume() 등의 동작 제어와 관련된 함수는 안정성 문제로 인해 사용하지 말 것을 권고하고 있다. 기존 시스템과 호환성을 위해 남겨 둘 뿐 신규 개발에서는 interrupt 등을 통해 스레드에서 종료하도록 구성해야 한다.
 
 
 
@@ -802,7 +802,7 @@ public class TestThreadSleep {
 * wait() 및 sleep() 함수는 모두 일정 기간 동안 현재 스레드의 실행을 일시 중지하는 데 사용된다\. 스레드가 wait() 함수를 호출할 때마다 보유하고 있는 잠금을 해제한 후 **WAITING 상태가 된다.** 스레드가 sleep() 함수를 호출할 때마다 보유하고 있는 잠금을 해제하지 않고 **TIMED_WAITING 상태가 된다.**
 
 * **WAITING** 상태(wait() 함수 호출 후 상태)에 있는 스레드는 동일한 잠금에서 notify( **)** 또는 **notifyAll()** 함수를 호출하여 다른 스레드에 의해 깨울 수 있습니다. 그러나, **TIMED_WAITING** 상태(sleep() 함수 호출 후 상태)에 있는 스레드는 깨울 수 없다. 스레드가 잠자는 스레드를 interrupt 하면 InterruptedException이 발생한다.
-* wait() 함수는 notify() 및 notifyAll()과 함께 **스레드 간 통신**에 사용되며 sleep() 함수는 특정 시간 동안 **현재 스레드의 실행을 일시 중지하는 데 사용된다.**
+* wait() 함수는 notify() 및 notifyAll()과 함께 **스레드간 통신**에 사용되며 sleep() 함수는 특정 시간 동안 **현재 스레드의 실행을 일시 중지하는 데 사용된다.**
 * wait() 함수는 **java.lang.Object** 클래스의 인스턴스 함수이다. 즉, 이 함수는 Java로 생성하는 모든 객체에서 사용할 수 있습니다. 여기서 sleep() 함수는 **java.lang.Thread** 클래스의 정적 함수이다. 즉, 스레드에서만 사용할 수 있습니다.
 
 ##### join() 함수
@@ -1595,7 +1595,7 @@ public class TestSynchronizedCounter {
 
 
 
-이와 같이 synchronized 적용은 함수에 키워드만 넣어서는 되지 않고, 각각의 스레드에서 접근하는 객체가 동일한 객체이어야 한다.
+이처럼 synchronized 적용은 함수에 키워드만 넣어서는 되지 않고, 각각의 스레드에서 접근하는 객체가 동일한 객체이어야 한다.
 
 
 
@@ -1706,7 +1706,7 @@ wait() 함수에 의해 lock 권한을 잃어버리고, WAITING 또는 TIMED_WAI
 
 ##### notify() 함수
 
-notify()  함수는 wait() 함수와 마찬가지로 lock을 소유한 상태에서 호출가능하다. notify() 함수가 호출되면, wait() 함수를 이용해 대기 상태에 있던 스레드 중 임의의 하나가 깨어난다. 깨어난 스레드는 WAITING 또는 TIMED_WAITING 상태에서 RUNNABLE 상태로 변경되어 실행 가능한 상태가 된다.
+notify()  함수는 wait() 함수와 마찬가지로 lock을 소유한 상태에서 호출할 수 있다. notify() 함수가 호출되면, wait() 함수를 이용해 대기 상태에 있던 스레드 중 임의의 하나가 깨어난다. 깨어난 스레드는 WAITING 또는 TIMED_WAITING 상태에서 RUNNABLE 상태로 변경되어 실행할 수 있는 상태가 된다.
 
 
 
