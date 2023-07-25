@@ -64,6 +64,30 @@
   <img src="./image/figure01.png" alt="프로젝트 구성"/>
 </p>
 
+#### 1-4-3. log4j2.xml
+~~~xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} %p %m%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <File name="file" fileName="./log/${date:yyyy-MM-dd}.log" append="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="file"/>
+        </Root>
+    </Loggers>
+</Configuration>
+~~~
 
 ## 2. Ball World
 
